@@ -14,10 +14,10 @@ cover: "/images/digital-products-with-ai.jpg"
 cover_shape: tall
 cover_alt: "A laptop showing a colorful interactive tracker on screen, beside a cup of coffee and a printed planner page"
 product:
-  name: "AI Maker's Blueprint"
-  blurb: "My four-part guide to building and selling your first AI-made digital product, with the prompts and checklists I use myself."
-  cta: "Get the Blueprint"
-  url: "https://shop.beacons.ai/creativedigitalstory"
+  name: "Etsy Success Guide 2026"
+  blurb: "Made your first digital product? My Etsy Success Guide 2026 walks you through setting up your shop, writing listings that get found, and getting to your first sales."
+  cta: "See the guide"
+  url: "https://beacons.ai/creativedigitalstory"
 ---
 Not long ago, "make a digital product" meant a PDF. You'd write a guide, design it in Canva, export it and hope it looked good on a phone.
 
@@ -29,8 +29,8 @@ This entry is the exact process I use, in the order I use it.
 
 So you know this isn't theory, here's a sample of what has come out of this process for my shop, Creative Digital Story:
 
-- **Guides and courses:** the AI Maker's Blueprint, an Etsy Success Guide, and courses on Canva Code, Claude, Threads and Pinterest.
-- **Interactive tools:** a reading tracker, an Etsy Next Action dashboard, and a bundle of six AI-powered Pinterest tools.
+- **Guides and courses:** the Etsy Success Guide 2026 and my newest course, Make Money with an Automated Affiliate Blog.
+- **Interactive tools:** a reading tracker, an Etsy Next Action dashboard, and the Pinterest Wealth Bundle, a set of six AI-powered Pinterest tools.
 - **Just-for-fun products:** a toddler alphabet game and an interactive coloring book.
 - **Spreadsheets:** trackers for small business owners, built in Excel.
 
@@ -59,7 +59,7 @@ Answering those questions forces you to make the decisions you'd otherwise skip,
 
 ## Step 3: Outline before you build
 
-Next I ask for a structure: the sections, screens or modules, and what each one does. This is the cheapest moment to change your mind. When I built a course called AI Income Builder, I restructured it into five modules that end with a real first-customer experiment, because an outline made it obvious that the original plan finished with theory instead of action.
+Next I ask for a structure: the sections, screens or modules, and what each one does. This is the cheapest moment to change your mind: moving a section around in an outline takes seconds, while moving it in a finished product means rebuilding. Read the outline as your customer would, and check that it ends with them doing something, not just knowing something.
 
 ## Step 4: Build it as one interactive page
 

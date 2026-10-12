@@ -14,10 +14,10 @@ cover: "/images/ai-tool-stack.jpg"
 cover_shape: tall
 cover_alt: "A tidy desk from above with a laptop, a phone and a notebook listing tool names in neat handwriting"
 product:
-  name: "Canva Code for Creators"
-  blurb: "Learn to turn Canva into a builder for interactive pages and simple tools, the fastest way into this stack if you already know Canva."
+  name: "Make Money with an Automated Affiliate Blog"
+  blurb: "Want to see this stack working together? My step-by-step course shows you how to build an automated affiliate blog with Claude, ChatGPT, Netlify and Pinterest, with a hands-on exercise in every chapter."
   cta: "See the course"
-  url: "https://shop.beacons.ai/creativedigitalstory"
+  url: "https://shop.beacons.ai/creativedigitalstory/3892a1a5-5973-4e66-8ba2-0ae2f20b015c"
 ---
 People assume running a business with AI means paying for twenty subscriptions. Mine runs on eight tools, and most of them have free plans that are enough to get started.
 
@@ -54,7 +54,7 @@ I use ChatGPT for one job: images. Each blog post comes with written photo promp
 
 ## Canva: the design studio
 
-Canva is where my Pinterest pins, product mockups and shop images get made. If you already know Canva, you're further along than you think: it's also become a surprisingly capable way to build simple interactive pages, which is what my Canva Code course covers.
+Canva is where my Pinterest pins, product mockups and shop images get made. If you already know Canva, you're further along than you think: it's also become a surprisingly capable way to build simple interactive pages.
 
 ## Netlify and GitHub: the plumbing
 

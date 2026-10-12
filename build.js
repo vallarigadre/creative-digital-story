@@ -160,6 +160,11 @@ nav.sections a[aria-current]{color:var(--brown);text-decoration:underline;text-d
 .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;align-items:center}
 .chip{font:500 .74rem var(--mono);letter-spacing:.04em;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
 .post-cover{margin-block:8px 30px}
+.tall-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,4vw,48px);align-items:center;max-width:1000px;margin:0 auto 30px}
+.tall-head .post-head{max-width:none}
+.tall-cover{aspect-ratio:2/3;max-height:640px;border-radius:10px;overflow:hidden;background:var(--tone-blush)}
+.tall-cover img{width:100%;height:100%;object-fit:cover}
+@media (max-width:760px){.tall-head{grid-template-columns:1fr;gap:0}.tall-cover{aspect-ratio:4/5;max-height:none}}
 .prose{font-size:1.09rem}
 .prose h2{font-size:1.75rem;margin:2.2em 0 .5em}
 .prose h3{font-size:1.3rem;margin:1.8em 0 .4em}
@@ -358,6 +363,7 @@ const others = products.filter(p => p !== featured);
 const filterBar = cur => `<nav class="filters" aria-label="Topics"><a href="blog.html"${cur === 'all' ? ' aria-current="page"' : ''}>All posts</a>${SECTIONS.map(s => `<a href="${s.slug}.html"${cur === s.slug ? ' aria-current="page"' : ''}>${s.name}</a>`).join('')}</nav>`;
 
 function pinBlock(p) {
+  if (!imgExists(p.pin_image) && p.cover_shape === 'tall' && imgExists(p.cover)) p = { ...p, pin_image: p.cover, pin_alt: p.pin_alt || p.cover_alt };
   if (!imgExists(p.pin_image)) return '';
   const url = `${cfg.url}/${p.slug}`, media = `${cfg.url}/${relImg(p.pin_image)}`;
   const desc = p.pin_description || p.description || p.title;
@@ -438,21 +444,23 @@ for (const p of [...posts, ...drafts]) {
   const tools = (p.tools || []).length ? `<div class="tools"><span class="label">Built with</span>${p.tools.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>` : '';
   const html = p.html.replace(/<table>/g, '<div class="table-wrap"><table>').replace(/<\/table>/g, '</table></div>');
   const banner = p.draft ? `<div class="read" style="margin-top:20px;padding:12px 16px;border-radius:8px;background:var(--blush-soft);border:1px solid var(--blush);font-weight:600">Draft preview: only people with this link can see it. It is not on the home page, blog or search engines yet.</div>` : '';
+  const tall = p.cover_shape === 'tall' && imgExists(p.cover);
+  const firstLandscape = [2, 3, 4].map(n => `/images/${p.slug}-${n}.jpg`).find(imgExists);
   const body = `<article>${banner}
-<div class="wrap"><header class="post-head read">
+<div class="wrap">${tall ? '<div class="tall-head">' : ''}<header class="post-head${tall ? '' : ' read'}">
 <span class="label"><span class="dot t-${p.section.tone}"></span> Entry No. ${pad(p.no)} · <a href="${p.section.slug}.html">${p.section.name}</a></span>
 <h1>${esc(p.title)}</h1>
 ${p.subtitle ? `<p class="sub">${esc(p.subtitle)}</p>` : ''}
 <div class="byline label"><span>By ${esc(cfg.author)}</span><span>${fmtDate(p.date)}</span><span>${p.minutes} min read</span></div>
 ${tools}
 </header>
-<div class="post-cover">${cover(p, true)}</div>
+${tall ? `<div class="tall-cover"><img src="${relImg(p.cover)}" alt="${esc(p.cover_alt || p.title)}"></div></div>` : `<div class="post-cover">${cover(p, true)}</div>`}
 <div class="read prose">${html}</div>
 <div class="read">${pinBlock(p)}${productBox(p)}${newsletter()}
 ${related.length ? `<section class="related"><h2 style="font-size:1.4rem;margin:0 0 4px">Keep reading</h2>${related.map(entryLine).join('')}</section>` : ''}
 </div></div></article>`;
   write(`${p.slug}.html`, shell({ title: `${p.title} | ${cfg.title}`, description: p.description, file: `${p.slug}.html`, current: 'blog', body, type: 'article', noindex: !!p.draft,
-    ogImage: imgExists(p.cover) ? relImg(p.cover) : null,
+    ogImage: tall && firstLandscape ? relImg(firstLandscape) : imgExists(p.cover) ? relImg(p.cover) : null,
     jsonld: { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.title, description: p.description, datePublished: p.date,
       author: { '@type': 'Person', name: 'Vallari Gadre' }, publisher: { '@type': 'Organization', name: cfg.brand },
       keywords: (p.tags || []).join(', '), mainEntityOfPage: `${cfg.url}/${p.slug}` } }));

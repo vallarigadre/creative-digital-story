@@ -193,6 +193,10 @@ nav.sections a[aria-current]{color:var(--brown);text-decoration:underline;text-d
 .news .ok{margin:12px 0 0;color:var(--brown);font-weight:600}
 .hp{position:absolute;left:-9999px}
 .related{padding-block:10px 20px}
+.pinsave{margin-block:36px;text-align:center}
+.pinsave img{max-width:340px;width:100%;margin:12px auto 14px;border-radius:8px;box-shadow:0 6px 24px rgba(59,42,33,.12)}
+.pinsave h2{font-size:1.4rem;margin:4px 0 0}
+.pinsave p{margin:4px 0 14px;color:var(--muted)}
 
 /* home hero */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(22px,4vw,56px);align-items:center;padding-block:clamp(28px,5vw,56px) 36px}
@@ -353,6 +357,18 @@ const featured = products.find(p => p.featured) || products[0];
 const others = products.filter(p => p !== featured);
 const filterBar = cur => `<nav class="filters" aria-label="Topics"><a href="blog.html"${cur === 'all' ? ' aria-current="page"' : ''}>All posts</a>${SECTIONS.map(s => `<a href="${s.slug}.html"${cur === s.slug ? ' aria-current="page"' : ''}>${s.name}</a>`).join('')}</nav>`;
 
+function pinBlock(p) {
+  if (!imgExists(p.pin_image)) return '';
+  const url = `${cfg.url}/${p.slug}`, media = `${cfg.url}/${relImg(p.pin_image)}`;
+  const desc = p.pin_description || p.description || p.title;
+  const href = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&media=${encodeURIComponent(media)}&description=${encodeURIComponent(desc)}`;
+  return `<aside class="pinsave" aria-label="Save to Pinterest"><span class="label">Save this for later</span>
+<h2>${esc(p.pin_title || p.title)}</h2>
+<img src="${relImg(p.pin_image)}" alt="${esc(p.pin_alt || p.pin_title || p.title)}" loading="lazy" data-pin-description="${esc(desc)}">
+<p>Pin it to your Pinterest board so you can come back to it.</p>
+<a class="btn" href="${href}" target="_blank" rel="noopener">Save to Pinterest</a></aside>`;
+}
+
 // ---------- write pages ----------
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'images'), { recursive: true });
@@ -432,7 +448,7 @@ ${tools}
 </header>
 <div class="post-cover">${cover(p, true)}</div>
 <div class="read prose">${html}</div>
-<div class="read">${productBox(p)}${newsletter()}
+<div class="read">${pinBlock(p)}${productBox(p)}${newsletter()}
 ${related.length ? `<section class="related"><h2 style="font-size:1.4rem;margin:0 0 4px">Keep reading</h2>${related.map(entryLine).join('')}</section>` : ''}
 </div></div></article>`;
   write(`${p.slug}.html`, shell({ title: `${p.title} | ${cfg.title}`, description: p.description, file: `${p.slug}.html`, current: 'blog', body, type: 'article', noindex: !!p.draft,

@@ -11,6 +11,7 @@ tools: [Claude, ChatGPT, Netlify, GitHub, Amazon SiteStripe]
 pin_title: "How I Built a Blog That Writes Itself With AI"
 pin_description: "The real system behind my automated affiliate blog: a scheduled AI task that researches, writes and picks products twice a week, plus the human checks that keep it good."
 cover: "/images/blog-that-writes-itself.jpg"
+cover_shape: tall
 cover_alt: "A laptop on a cream desk showing a blog draft, with a coffee cup and a notebook of handwritten checklists"
 product:
   name: "Make Money with an Automated Affiliate Blog"

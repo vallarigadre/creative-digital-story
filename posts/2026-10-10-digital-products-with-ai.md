@@ -11,6 +11,7 @@ tools: [Claude, Canva, Netlify, Beacons]
 pin_title: "How I Make Digital Products With AI (Step by Step)"
 pin_description: "From a blank chat to a sellable guide: the 7-step process I use to build interactive digital products with AI, no coding required."
 cover: "/images/digital-products-with-ai.jpg"
+cover_shape: tall
 cover_alt: "A laptop showing a colorful interactive tracker on screen, beside a cup of coffee and a printed planner page"
 product:
   name: "AI Maker's Blueprint"

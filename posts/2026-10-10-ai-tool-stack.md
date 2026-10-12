@@ -11,6 +11,7 @@ tools: [Claude, ChatGPT, Canva, Netlify, GitHub, Beacons, Pinterest, Medium]
 pin_title: "The AI Tool Stack I Use to Run My Business Solo"
 pin_description: "The 8 tools behind my automated blogs and AI-made digital products, what each one does, and the order to learn them in."
 cover: "/images/ai-tool-stack.jpg"
+cover_shape: tall
 cover_alt: "A tidy desk from above with a laptop, a phone and a notebook listing tool names in neat handwriting"
 product:
   name: "Canva Code for Creators"

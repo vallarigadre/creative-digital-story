@@ -11,6 +11,7 @@ const ROOT = __dirname;
 const OUT = path.join(ROOT, 'dist');
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const IMG_DIR = path.join(ROOT, 'static', 'images');
+const products = JSON.parse(fs.readFileSync(path.join(ROOT, 'products.json'), 'utf8'));
 
 const SECTIONS = [
   { name: 'Behind the Build', slug: 'behind-the-build', tone: 'blush',
@@ -189,6 +190,55 @@ nav.sections a[aria-current]{color:var(--brown);text-decoration:underline;text-d
 .hp{position:absolute;left:-9999px}
 .related{padding-block:10px 20px}
 
+/* home hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(22px,4vw,56px);align-items:center;padding-block:clamp(28px,5vw,56px) 36px}
+.hero h1{font-size:clamp(2.1rem,5.2vw,3.5rem);margin:12px 0 16px}
+.hero h1 em{color:var(--brown);font-style:italic}
+.hero p{margin:0 0 14px;color:var(--ink);font-size:1.08rem;max-width:52ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn.ghost{background:transparent;color:var(--brown);border:1.5px solid var(--brown)}
+.btn.ghost:hover{background:var(--brown);color:var(--paper)}
+.hero-img{aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:linear-gradient(140deg,var(--blush-soft),var(--tone-blush) 55%,var(--tone-cocoa));position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img .ph{position:absolute;inset:0;display:flex;align-items:flex-end;padding:clamp(18px,4%,30px)}
+.hero-img .ph span{font:italic 400 clamp(1.3rem,3vw,1.9rem)/1.2 var(--display);color:var(--brown-ink);max-width:16ch}
+@media (max-width:820px){.hero{grid-template-columns:1fr}.hero-img{order:-1}}
+.band{padding-block:34px 10px;border-top:1px solid var(--line)}
+.band-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 20px;margin-bottom:18px}
+.band-head h2{font-size:clamp(1.5rem,3.4vw,2rem);margin:6px 0 0}
+.band-head a{font-weight:700;font-size:.95rem}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:30px}
+.pillars div{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px}
+.pillars h3{font-size:1.2rem;margin:6px 0 6px}
+.pillars p{margin:0;color:var(--muted);font-size:.96rem}
+
+/* products */
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--blush);background:var(--blush-soft);margin-bottom:34px}
+.feature .art{min-height:220px;background:linear-gradient(150deg,var(--tone-blush),var(--tone-cocoa));display:flex;align-items:flex-end;padding:24px}
+.feature .art img{width:100%;height:100%;object-fit:cover}
+.feature .art.has-img{padding:0}
+.feature .art span{font:400 clamp(1.6rem,3.6vw,2.4rem)/1.1 var(--display);color:var(--brown-ink);font-variation-settings:"SOFT" 100}
+.feature .txt{padding:clamp(22px,4vw,36px)}
+.feature h3{font-size:clamp(1.4rem,3vw,1.9rem);margin:8px 0 10px}
+.feature p{margin:0 0 18px}
+@media (max-width:760px){.feature{grid-template-columns:1fr}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-bottom:34px}
+.card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.card .art{aspect-ratio:5/2;background:var(--tone-blush);display:flex;align-items:flex-end;padding:18px}
+.card .art img{width:100%;height:100%;object-fit:cover}
+.card .art.has-img{padding:0;aspect-ratio:1/1}
+.card .art span{font:400 1.45rem/1.15 var(--display);color:var(--brown-ink);font-variation-settings:"SOFT" 100}
+.card .art.t-cocoa{background:var(--tone-cocoa)}.card .art.t-sand{background:var(--tone-sand)}.card .art.t-rose{background:var(--tone-rose)}
+.card .body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1.2rem;margin:6px 0 8px}
+.card p{margin:0 0 16px;color:var(--muted);font-size:.95rem;flex:1}
+.card .btn{align-self:flex-start;padding:9px 18px;font-size:.88rem}
+
+/* blog filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 22px}
+.filters a{font:600 .88rem var(--body);text-decoration:none;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.filters a:hover,.filters a[aria-current]{background:var(--blush);border-color:var(--blush);color:#3B2A21}
+
 /* plain pages + footer */
 .page{padding-block:34px 20px}
 .page h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 18px}
@@ -205,8 +255,8 @@ const analytics = cfg.cloudflareAnalyticsToken
 
 function shell({ title, description, file, current, body, ogImage, jsonld, type = 'website' }) {
   const canonical = `${cfg.url}/${file === 'index.html' ? '' : file.replace(/\.html$/, '')}`;
-  const nav = SECTIONS.map(s => `<a href="${s.slug}.html"${current === s.slug ? ' aria-current="page"' : ''}>${s.name}</a>`).join('')
-    + `<a href="about.html"${current === 'about' ? ' aria-current="page"' : ''}>About</a>`;
+  const nav = [['index.html', 'Home', 'home'], ['blog.html', 'Blog', 'blog'], ['shop.html', 'Shop', 'shop'], ['about.html', 'About', 'about']]
+    .map(([href, label, key]) => `<a href="${href}"${current === key ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -233,14 +283,14 @@ ${analytics}
 <div class="wrap">
 <div class="top"><span class="label">A build log by ${esc(cfg.author)}</span><a class="shop" href="${cfg.shopUrl}" target="_blank" rel="noopener">Shop the guides</a></div>
 <header class="mast"><a href="index.html"><p class="wordmark">Creative <em>Digital</em> Story</p></a><p class="tagline">${esc(cfg.tagline)}</p></header>
-<nav class="sections" aria-label="Sections">${nav}</nav>
+<nav class="sections" aria-label="Main">${nav}</nav>
 </div>
 <main>
 ${body}
 </main>
 <div class="wrap"><footer><div class="cols">
 <div>© ${new Date().getFullYear()} ${esc(cfg.title)}.<br>Written with AI help, edited and tested by a human.</div>
-<nav aria-label="Footer"><a href="about.html">About</a><a href="disclosure.html">Disclosure</a><a href="privacy.html">Privacy</a><a href="feed.xml">RSS</a><a href="${cfg.shopUrl}" target="_blank" rel="noopener">Shop</a></nav>
+<nav aria-label="Footer"><a href="blog.html">Blog</a><a href="shop.html">Shop</a><a href="about.html">About</a><a href="disclosure.html">Disclosure</a><a href="privacy.html">Privacy</a><a href="feed.xml">RSS</a></nav>
 </div></footer></div>
 <script>
 document.querySelectorAll('form[data-netlify]').forEach(function(f){f.addEventListener('submit',function(e){
@@ -287,6 +337,18 @@ function productBox(p) {
 </aside>`;
 }
 
+const TONES = ['blush', 'cocoa', 'sand', 'rose'];
+const prodArt = (pr, cls) => imgExists(pr.image)
+  ? `<div class="art has-img ${cls || ''}"><img src="${relImg(pr.image)}" alt="${esc(pr.name)} cover" loading="lazy"></div>`
+  : `<div class="art ${cls || ''}" aria-hidden="true"><span>${esc(pr.name)}</span></div>`;
+const featureCard = pr => `<article class="feature">${prodArt(pr)}<div class="txt"><span class="label">Featured ${esc(pr.type || '').toLowerCase()}</span>
+<h3>${esc(pr.name)}</h3><p>${esc(pr.blurb)}</p><a class="btn" href="${esc(pr.url)}" target="_blank" rel="noopener">${esc(pr.cta || 'See it')}</a></div></article>`;
+const productCard = (pr, i) => `<article class="card">${prodArt(pr, 't-' + TONES[i % 4])}<div class="body"><span class="label">${esc(pr.type || 'Guide')}</span>
+<h3>${esc(pr.name)}</h3><p>${esc(pr.blurb)}</p><a class="btn" href="${esc(pr.url)}" target="_blank" rel="noopener">${esc(pr.cta || 'See it')}</a></div></article>`;
+const featured = products.find(p => p.featured) || products[0];
+const others = products.filter(p => p !== featured);
+const filterBar = cur => `<nav class="filters" aria-label="Topics"><a href="blog.html"${cur === 'all' ? ' aria-current="page"' : ''}>All posts</a>${SECTIONS.map(s => `<a href="${s.slug}.html"${cur === s.slug ? ' aria-current="page"' : ''}>${s.name}</a>`).join('')}</nav>`;
+
 // ---------- write pages ----------
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'images'), { recursive: true });
@@ -295,32 +357,59 @@ const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
 
 // Home
 {
-  const [latest, ...rest] = newestFirst;
-  const lead = latest ? `<section class="lead">
-${cover(latest, true)}
-<div><span class="label">Latest · Entry No. ${pad(latest.no)} · ${latest.section.name}</span>
-<h2><a href="${latest.slug}.html">${esc(latest.title)}</a></h2>
-<p>${esc(latest.subtitle || latest.description)}</p>
-<a class="btn" href="${latest.slug}.html">Read the entry</a></div>
-</section>` : '';
-  const body = `<div class="wrap">${lead}
-<section class="log" aria-labelledby="log-h"><h2 class="h" id="log-h">The build log</h2>
-${(rest.length ? rest : []).map(entryLine).join('\n') || '<p class="label">More entries every Saturday.</p>'}
-</section>
-<section aria-labelledby="shelf-h"><h2 class="h" id="shelf-h" style="font-size:1.5rem;margin:0">Four ways in</h2>
-<div class="shelf">${SECTIONS.map(s => `<a href="${s.slug}.html"><span class="label"><span class="dot t-${s.tone}"></span> ${(n => n === 1 ? '1 entry' : n + ' entries')(posts.filter(p => p.section === s).length)}</span><h3>${s.name}</h3><p>${s.blurb}</p></a>`).join('')}</div></section>
+  const hero = `<section class="hero">
+<div><span class="label">Hi, I'm ${esc(cfg.author)}</span>
+<h1>Building an income stream with <em>AI</em>, one small system at a time</h1>
+<p>I'm a mom in my 30s building a little online business, so I can spend more of my days with my kid. AI does a lot of the heavy lifting: my blogs draft their own posts, and my guides and courses are built with Claude.</p>
+<p>This is where I show exactly how it all works, mistakes included.</p>
+<div class="ctas"><a class="btn" href="blog.html">Read the blog</a><a class="btn ghost" href="shop.html">Shop the guides</a></div></div>
+<div class="hero-img">${imgExists('home-hero.jpg') ? `<img src="images/home-hero.jpg" alt="A hand holding a cup of coffee next to an open laptop on a cream desk">` : `<div class="ph"><span>Built with AI, edited by a human.</span></div>`}</div>
+</section>`;
+  const pillars = `<div class="pillars">
+<div><span class="label">01</span><h3>Blogs that draft themselves</h3><p>Scheduled AI tasks research and write each post. I review, edit and publish.</p></div>
+<div><span class="label">02</span><h3>Products made with AI</h3><p>Interactive guides, trackers and courses, built with Claude from plain-language ideas.</p></div>
+<div><span class="label">03</span><h3>Honest, step by step</h3><p>No get-rich-quick promises. Just the real setup, so you can build your own.</p></div>
+</div>`;
+  const latest = newestFirst.slice(0, 3);
+  const body = `<div class="wrap">${hero}
+<section class="band" aria-labelledby="what-h"><div class="band-head"><div><span class="label">What I build</span><h2 id="what-h">A business that runs around family life</h2></div></div>${pillars}</section>
+<section class="band" aria-labelledby="feat-h"><div class="band-head"><div><span class="label">New</span><h2 id="feat-h">Start with the course</h2></div><a href="shop.html">See everything in the shop</a></div>${featureCard(featured)}</section>
+<section class="band" aria-labelledby="log-h"><div class="band-head"><div><span class="label">Every Saturday</span><h2 id="log-h">Latest from the blog</h2></div><a href="blog.html">All posts</a></div>
+<div class="log" style="padding-top:0">${latest.map(entryLine).join('\n') || '<p class="label">The first post lands on Saturday.</p>'}</div></section>
+<section class="band" aria-labelledby="shop-h"><div class="band-head"><div><span class="label">The shop</span><h2 id="shop-h">Guides and courses</h2></div><a href="shop.html">See all ${products.length}</a></div>
+<div class="grid">${others.slice(0, 3).map(productCard).join('')}</div></section>
 <div class="read">${newsletter()}</div></div>`;
-  write('index.html', shell({ title: `${cfg.title}: ${cfg.tagline}`, description: 'A weekly build log on running a one-woman business with AI: blogs that write themselves, digital products made with AI, and the honest numbers behind them.', file: 'index.html', body,
+  write('index.html', shell({ title: `${cfg.title}: ${cfg.tagline}`, description: 'A mom building an income stream with AI: blogs that draft themselves, digital products made with Claude, and the honest steps behind them.', file: 'index.html', current: 'home', body,
     jsonld: { '@context': 'https://schema.org', '@type': 'Blog', name: cfg.title, url: cfg.url, description: cfg.tagline } }));
+}
+
+// Blog page
+{
+  const body = `<div class="wrap"><div class="page"><span class="label">The blog</span><h1>All posts</h1><p class="tagline" style="max-width:60ch">A new post every Saturday on how I run my business with AI. Pick a topic or scroll the whole log.</p></div>
+${filterBar('all')}
+<section class="log" style="padding-top:0">${newestFirst.map(entryLine).join('\n')}</section>
+<div class="read">${newsletter()}</div></div>`;
+  write('blog.html', shell({ title: `Blog | ${cfg.title}`, description: 'Every post on building a small online business with AI: tools, behind the scenes, income experiments and playbooks.', file: 'blog.html', current: 'blog', body }));
+}
+
+// Shop page
+{
+  const body = `<div class="wrap"><div class="page"><span class="label">The shop</span><h1>Guides, courses and tools</h1><p class="tagline" style="max-width:60ch">Everything I make is built with AI and tested by me. Each one opens on my Beacons shop, where you can see the details and buy securely.</p></div>
+${featureCard(featured)}
+<div class="grid">${others.map(productCard).join('')}</div>
+<p class="label" style="margin-bottom:30px">Prices and full details are on each product page.</p>
+<div class="read">${newsletter()}</div></div>`;
+  write('shop.html', shell({ title: `Shop | ${cfg.title}`, description: 'Digital guides, courses and tools by Creative Digital Story, all built with AI.', file: 'shop.html', current: 'shop', body }));
 }
 
 // Section pages
 for (const s of SECTIONS) {
   const list = newestFirst.filter(p => p.section === s);
   const body = `<div class="wrap"><div class="page"><span class="label"><span class="dot t-${s.tone}"></span> Section</span><h1>${s.name}</h1><p class="tagline" style="max-width:60ch">${s.blurb}</p></div>
-<section class="log">${list.map(entryLine).join('\n') || '<p>The first entry in this section lands on a Saturday soon.</p>'}</section>
+${filterBar(s.slug)}
+<section class="log" style="padding-top:0">${list.map(entryLine).join('\n') || '<p>The first entry in this section lands on a Saturday soon.</p>'}</section>
 <div class="read">${newsletter()}</div></div>`;
-  write(`${s.slug}.html`, shell({ title: `${s.name} | ${cfg.title}`, description: s.blurb, file: `${s.slug}.html`, current: s.slug, body }));
+  write(`${s.slug}.html`, shell({ title: `${s.name} | ${cfg.title}`, description: s.blurb, file: `${s.slug}.html`, current: 'blog', body }));
 }
 
 // Posts
@@ -341,7 +430,7 @@ ${tools}
 <div class="read">${productBox(p)}${newsletter()}
 ${related.length ? `<section class="related"><h2 style="font-size:1.4rem;margin:0 0 4px">Keep reading</h2>${related.map(entryLine).join('')}</section>` : ''}
 </div></div></article>`;
-  write(`${p.slug}.html`, shell({ title: `${p.title} | ${cfg.title}`, description: p.description, file: `${p.slug}.html`, current: p.section.slug, body, type: 'article',
+  write(`${p.slug}.html`, shell({ title: `${p.title} | ${cfg.title}`, description: p.description, file: `${p.slug}.html`, current: 'blog', body, type: 'article',
     ogImage: imgExists(p.cover) ? relImg(p.cover) : null,
     jsonld: { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.title, description: p.description, datePublished: p.date,
       author: { '@type': 'Person', name: 'Vallari Gadre' }, publisher: { '@type': 'Organization', name: cfg.brand },
@@ -359,9 +448,9 @@ for (const f of fs.readdirSync(pagesDir).filter(f => f.endsWith('.md'))) {
 }
 
 // Sitemap, robots, RSS
-const urls = ['', ...SECTIONS.map(s => s.slug), 'about', ...posts.map(p => p.slug)];
+const urls = ['', 'blog', 'shop', ...SECTIONS.map(s => s.slug), 'about', ...posts.map(p => p.slug)];
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${cfg.url}/${u}</loc></url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${cfg.url}/sitemap.xml\n`);
 write('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${esc(cfg.title)}</title><link>${cfg.url}</link><description>${esc(cfg.tagline)}</description>\n${newestFirst.map(p => `<item><title>${esc(p.title)}</title><link>${cfg.url}/${p.slug}</link><guid>${cfg.url}/${p.slug}</guid><pubDate>${new Date(p.date + 'T03:30:00Z').toUTCString()}</pubDate><description>${esc(p.description)}</description></item>`).join('\n')}\n</channel></rss>\n`);
 
-console.log(`Built ${posts.length} posts, ${SECTIONS.length} sections into dist/`);
+console.log(`Built home, blog, shop, ${posts.length} posts, ${SECTIONS.length} sections into dist/`);

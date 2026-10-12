@@ -28,7 +28,7 @@ This entry walks through exactly how my home and lifestyle blog, House & Habit, 
 
 House & Habit is a magazine-style blog about home decor, cozy living and hosting, aimed at American women who love that world. It earns through Amazon affiliate links: when a reader buys a lamp or a linen napkin set I recommend, I earn a small commission.
 
-Affiliate blogs live or die on consistency. Google and Pinterest both reward sites that publish regularly, and that is the exact thing a busy person with a day job struggles to do. So instead of trying to find writing time, I gave the writing a calendar of its own.
+Affiliate blogs live or die on consistency. Google and Pinterest both reward sites that publish regularly, and that is the exact thing a busy mom struggles to do. So instead of trying to find writing time, I gave the writing a calendar of its own.
 
 The core of the system is a **scheduled task in Claude**. It's a set of instructions that runs by itself every Tuesday and Friday morning, starts a fresh session, does the whole job from scratch and sends me the results.
 
@@ -84,7 +84,7 @@ The website itself is a simple one, and Claude built it too. Each post is a plai
 
 ## Could you do this without code?
 
-Yes. I'm not a developer. My background is retail planning, which means I'm good at systems and checklists, and that turns out to be the real skill here. You need to be able to describe a job clearly, notice when the output is off, and tighten the instructions until it isn't.
+Yes. I'm not a developer, and you don't need to be one. The real skill here is thinking in simple systems and checklists. You need to be able to describe a job clearly, notice when the output is off, and tighten the instructions until it isn't.
 
 If you want to try it, start smaller than I did:
 

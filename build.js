@@ -196,6 +196,7 @@ nav.sections a[aria-current]{color:var(--brown);text-decoration:underline;text-d
 .news button{font:700 .95rem var(--body);padding:11px 22px;border-radius:999px;border:0;background:var(--brown);color:var(--paper);cursor:pointer}
 .news button:hover{background:var(--brown-ink)}
 .news .ok{margin:12px 0 0;color:var(--brown);font-weight:600}
+.news .err{margin:12px 0 0;color:#A33A3A;font-weight:600}
 .hp{position:absolute;left:-9999px}
 .related{padding-block:10px 20px}
 .pinsave{margin-block:36px;text-align:center}
@@ -325,7 +326,15 @@ ${body}
 </div></footer></div>
 <script>
 document.querySelectorAll('form[data-netlify]').forEach(function(f){f.addEventListener('submit',function(e){
-  if(location.hostname.indexOf('netlify')<0 && location.hostname.indexOf(${JSON.stringify(cfg.url.replace(/^https?:\/\//, ''))})<0){e.preventDefault();var ok=f.parentNode.querySelector('.ok');if(ok)ok.hidden=false;f.reset();}
+  e.preventDefault();
+  var box=f.parentNode, ok=box.querySelector('.ok'), err=box.querySelector('.err'), btn=f.querySelector('button');
+  if(ok)ok.hidden=true; if(err)err.hidden=true;
+  if(location.protocol==='file:'){if(ok)ok.hidden=false;f.reset();return;}
+  if(btn){btn.disabled=true;btn.textContent='Joining...';}
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
+    .then(function(r){if(!r.ok)throw new Error(r.status);if(ok)ok.hidden=false;f.reset();})
+    .catch(function(){if(err)err.hidden=false;})
+    .then(function(){if(btn){btn.disabled=false;btn.textContent='Join the list';}});
 });});
 </script>
 </body>
@@ -355,6 +364,7 @@ const newsletter = () => `<section class="news" aria-labelledby="news-h">
 <button type="submit">Join the list</button>
 </form>
 <p class="ok" hidden>Thank you, you're on the list.</p>
+<p class="err" hidden>Sorry, that didn't go through. Please try again in a minute.</p>
 </section>`;
 
 function productBox(p) {
@@ -381,6 +391,8 @@ const others = products.filter(p => p !== featured);
 const filterBar = cur => `<nav class="filters" aria-label="Topics"><a href="blog.html"${cur === 'all' ? ' aria-current="page"' : ''}>All posts</a>${SECTIONS.map(s => `<a href="${s.slug}.html"${cur === s.slug ? ' aria-current="page"' : ''}>${s.name}</a>`).join('')}</nav>`;
 
 function pinBlock(p) {
+  const made = `/images/${p.slug}-pin.jpg`;
+  if (!imgExists(p.pin_image) && imgExists(made)) p = { ...p, pin_image: made, pin_alt: p.pin_alt || `Pinterest image: ${p.pin_title || p.title}` };
   if (!imgExists(p.pin_image) && p.cover_shape === 'tall' && imgExists(p.cover)) p = { ...p, pin_image: p.cover, pin_alt: p.pin_alt || p.cover_alt };
   if (!imgExists(p.pin_image)) return '';
   const url = `${cfg.url}/${p.slug}`, media = `${cfg.url}/${relImg(p.pin_image)}`;

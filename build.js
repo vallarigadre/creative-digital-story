@@ -44,7 +44,7 @@ function fixLinks(html) {
 }
 
 // ---------- load posts ----------
-const posts = fs.readdirSync(path.join(ROOT, 'posts'))
+const allPosts = fs.readdirSync(path.join(ROOT, 'posts'))
   .filter(f => f.endsWith('.md'))
   .map(f => {
     const raw = fs.readFileSync(path.join(ROOT, 'posts', f), 'utf8');
@@ -61,7 +61,11 @@ const posts = fs.readdirSync(path.join(ROOT, 'posts'))
     return { ...data, date, slug, html, words, minutes: Math.max(1, Math.round(words / 230)), section: sectionByName[data.category], file: f };
   })
   .sort((a, b) => a.date.localeCompare(b.date) || (a.order || 0) - (b.order || 0) || a.file.localeCompare(b.file));
+// Drafts (draft: true) get a private preview page but stay off every list, the sitemap and RSS.
+const drafts = allPosts.filter(p => p.draft === true);
+const posts = allPosts.filter(p => p.draft !== true);
 posts.forEach((p, i) => (p.no = i + 1));
+drafts.forEach((p, i) => (p.no = posts.length + 1 + i));
 const newestFirst = [...posts].reverse();
 
 // ---------- styles ----------
@@ -253,7 +257,7 @@ footer a{color:var(--muted)}
 const analytics = cfg.cloudflareAnalyticsToken
   ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${esc(cfg.cloudflareAnalyticsToken)}"}'></script>` : '';
 
-function shell({ title, description, file, current, body, ogImage, jsonld, type = 'website' }) {
+function shell({ title, description, file, current, body, ogImage, jsonld, type = 'website', noindex = false }) {
   const canonical = `${cfg.url}/${file === 'index.html' ? '' : file.replace(/\.html$/, '')}`;
   const nav = [['index.html', 'Home', 'home'], ['blog.html', 'Blog', 'blog'], ['shop.html', 'Shop', 'shop'], ['about.html', 'About', 'about']]
     .map(([href, label, key]) => `<a href="${href}"${current === key ? ' aria-current="page"' : ''}>${label}</a>`).join('');
@@ -264,7 +268,7 @@ function shell({ title, description, file, current, body, ogImage, jsonld, type 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-<link rel="canonical" href="${canonical}">
+<link rel="canonical" href="${canonical}">${noindex ? '\n<meta name="robots" content="noindex, nofollow">' : ''}
 <meta property="og:type" content="${type}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
@@ -412,12 +416,13 @@ ${filterBar(s.slug)}
   write(`${s.slug}.html`, shell({ title: `${s.name} | ${cfg.title}`, description: s.blurb, file: `${s.slug}.html`, current: 'blog', body }));
 }
 
-// Posts
-for (const p of posts) {
+// Posts (and private draft previews)
+for (const p of [...posts, ...drafts]) {
   const related = newestFirst.filter(q => q !== p && q.section === p.section).concat(newestFirst.filter(q => q !== p && q.section !== p.section)).slice(0, 3);
   const tools = (p.tools || []).length ? `<div class="tools"><span class="label">Built with</span>${p.tools.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>` : '';
   const html = p.html.replace(/<table>/g, '<div class="table-wrap"><table>').replace(/<\/table>/g, '</table></div>');
-  const body = `<article>
+  const banner = p.draft ? `<div class="read" style="margin-top:20px;padding:12px 16px;border-radius:8px;background:var(--blush-soft);border:1px solid var(--blush);font-weight:600">Draft preview: only people with this link can see it. It is not on the home page, blog or search engines yet.</div>` : '';
+  const body = `<article>${banner}
 <div class="wrap"><header class="post-head read">
 <span class="label"><span class="dot t-${p.section.tone}"></span> Entry No. ${pad(p.no)} · <a href="${p.section.slug}.html">${p.section.name}</a></span>
 <h1>${esc(p.title)}</h1>
@@ -430,7 +435,7 @@ ${tools}
 <div class="read">${productBox(p)}${newsletter()}
 ${related.length ? `<section class="related"><h2 style="font-size:1.4rem;margin:0 0 4px">Keep reading</h2>${related.map(entryLine).join('')}</section>` : ''}
 </div></div></article>`;
-  write(`${p.slug}.html`, shell({ title: `${p.title} | ${cfg.title}`, description: p.description, file: `${p.slug}.html`, current: 'blog', body, type: 'article',
+  write(`${p.slug}.html`, shell({ title: `${p.title} | ${cfg.title}`, description: p.description, file: `${p.slug}.html`, current: 'blog', body, type: 'article', noindex: !!p.draft,
     ogImage: imgExists(p.cover) ? relImg(p.cover) : null,
     jsonld: { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.title, description: p.description, datePublished: p.date,
       author: { '@type': 'Person', name: 'Vallari Gadre' }, publisher: { '@type': 'Organization', name: cfg.brand },
@@ -453,4 +458,4 @@ write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="htt
 write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${cfg.url}/sitemap.xml\n`);
 write('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${esc(cfg.title)}</title><link>${cfg.url}</link><description>${esc(cfg.tagline)}</description>\n${newestFirst.map(p => `<item><title>${esc(p.title)}</title><link>${cfg.url}/${p.slug}</link><guid>${cfg.url}/${p.slug}</guid><pubDate>${new Date(p.date + 'T03:30:00Z').toUTCString()}</pubDate><description>${esc(p.description)}</description></item>`).join('\n')}\n</channel></rss>\n`);
 
-console.log(`Built home, blog, shop, ${posts.length} posts, ${SECTIONS.length} sections into dist/`);
+console.log(`Built home, blog, shop, ${posts.length} posts, ${drafts.length} drafts, ${SECTIONS.length} sections into dist/`);

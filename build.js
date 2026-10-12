@@ -235,7 +235,7 @@ nav.sections a[aria-current]{color:var(--brown);text-decoration:underline;text-d
 .feature h3{font-size:clamp(1.4rem,3vw,1.9rem);margin:8px 0 10px}
 .feature p{margin:0 0 18px}
 @media (max-width:760px){.feature{grid-template-columns:1fr}}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-bottom:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:34px}
 .card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .card .art{aspect-ratio:5/2;background:var(--tone-blush);display:flex;align-items:flex-end;padding:18px}
 .card .art img{width:100%;height:100%;object-fit:cover}
@@ -259,6 +259,24 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding-block:28px 40px;
 footer .cols{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 footer nav{display:flex;flex-wrap:wrap;gap:6px 18px}
 footer a{color:var(--muted)}
+/* centred titles and subtitles */
+.mast{text-align:center}
+nav.sections{justify-content:center}
+.hero > div:first-child{text-align:center}
+.hero p{margin-inline:auto}
+.hero .ctas{justify-content:center}
+.band-head{flex-direction:column;align-items:center;text-align:center;gap:6px}
+.page{text-align:center}
+.page .tagline{margin-inline:auto}
+.page .prose{text-align:left}
+.filters{justify-content:center}
+.post-head{text-align:center}
+.post-head .sub{margin-inline:auto;max-width:46ch}
+.byline,.tools{justify-content:center}
+.news{text-align:center}
+.news form{justify-content:center}
+.product{text-align:center}
+.related > h2{text-align:center}
 @media (prefers-reduced-motion:no-preference){a,.btn,.news button{transition:color .15s,background-color .15s}}
 `;
 

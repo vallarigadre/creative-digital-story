@@ -14,10 +14,10 @@ cover: "/images/digital-products-with-ai.jpg"
 cover_shape: tall
 cover_alt: "A laptop showing a colorful interactive tracker on screen, beside a cup of coffee and a printed planner page"
 product:
-  name: "Etsy Success Guide 2026"
-  blurb: "Made your first digital product? My Etsy Success Guide 2026 walks you through setting up your shop, writing listings that get found, and getting to your first sales."
+  name: "Interactive Digital Products Guide"
+  blurb: "Ready to make your own? My Interactive Digital Products Guide walks you through creating clickable tools, trackers and guides with AI, the same way I make mine."
   cta: "See the guide"
-  url: "https://beacons.ai/creativedigitalstory"
+  url: "https://shop.beacons.ai/creativedigitalstory/ade04b7d-959f-4e39-811d-fd95c2c30187"
 ---
 Not long ago, "make a digital product" meant a PDF. You'd write a guide, design it in Canva, export it and hope it looked good on a phone.
 
@@ -29,8 +29,8 @@ This entry is the exact process I use, in the order I use it.
 
 So you know this isn't theory, here's a sample of what has come out of this process for my shop, Creative Digital Story:
 
-- **Guides and courses:** the Etsy Success Guide 2026 and my newest course, Make Money with an Automated Affiliate Blog.
-- **Interactive tools:** a reading tracker, an Etsy Next Action dashboard, and the Pinterest Wealth Bundle, a set of six AI-powered Pinterest tools.
+- **Guides and courses:** the Interactive Digital Products Guide, the Etsy Success Guide 2026 Edition, and my newest course, Make Money with an Automated Affiliate Blog.
+- **Interactive tools:** a reading tracker, an Etsy Next Action dashboard, and the Pinterest Digital Wealth Bundle, a set of six AI-powered Pinterest tools.
 - **Just-for-fun products:** a toddler alphabet game and an interactive coloring book.
 - **Spreadsheets:** trackers for small business owners, built in Excel.
 

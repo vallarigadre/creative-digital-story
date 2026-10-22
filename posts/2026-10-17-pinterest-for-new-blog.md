@@ -2,7 +2,6 @@
 title: "Pinterest for a brand-new blog: a 30-day plan that doesn't eat your evenings"
 subtitle: "How to set up Pinterest for a blog with ten posts or fewer, from the account settings to a weekly pin routine you can keep up with."
 date: 2026-10-17
-draft: true
 slug: pinterest-for-new-blog
 category: Playbooks
 description: "A step-by-step 30-day Pinterest plan for a new blog: business account, claimed site, keyword boards, fresh pins each week and an AI prompt to speed it up."

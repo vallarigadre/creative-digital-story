@@ -481,7 +481,7 @@ for (const p of [...posts, ...drafts]) {
 <span class="label"><span class="dot t-${p.section.tone}"></span> Entry No. ${pad(p.no)} · <a href="${p.section.slug}.html">${p.section.name}</a></span>
 <h1>${esc(p.title)}</h1>
 ${p.subtitle ? `<p class="sub">${esc(p.subtitle)}</p>` : ''}
-<div class="byline label"><span>By ${esc(cfg.author)}</span><span>${fmtDate(p.date)}</span><span>${p.minutes} min read</span></div>
+<div class="byline label"><span>By ${esc(cfg.authorFullName || cfg.author)}</span><span>${fmtDate(p.date)}</span><span>${p.minutes} min read</span></div>
 ${tools}
 </header>
 ${tall ? `<div class="tall-cover"><img src="${relImg(p.cover)}" alt="${esc(p.cover_alt || p.title)}"></div></div>` : `<div class="post-cover">${cover(p, true)}</div>`}

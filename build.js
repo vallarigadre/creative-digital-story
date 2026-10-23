@@ -279,6 +279,55 @@ nav.sections{justify-content:center}
 .product{text-align:center}
 .related > h2{text-align:center}
 @media (prefers-reduced-motion:no-preference){a,.btn,.news button{transition:color .15s,background-color .15s}}
+/* full-bleed photo hero (like House & Habit) */
+.hero{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:clamp(440px,72vh,700px);margin-inline:calc(-1 * clamp(16px,4vw,40px));padding:0;background:#3B2A21;overflow:hidden;grid-template-columns:none}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(43,28,20,.85) 0%,rgba(43,28,20,.6) 55%,rgba(43,28,20,.25) 100%)}
+.hero--plain{background:linear-gradient(140deg,var(--tone-cocoa),var(--brown))}
+.hero__inner{width:100%;max-width:1080px;margin-inline:auto;padding:clamp(28px,7vw,72px) clamp(16px,4vw,40px);text-align:center;color:#FBF5EE}
+.hero .hero__kicker{font:500 .8rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#FBF5EE;text-shadow:0 1px 8px rgba(0,0,0,.35);margin:0 0 14px}
+.hero h1{font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.05;margin:0 auto 14px;max-width:18ch;color:#FBF5EE;font-variation-settings:"SOFT" 100}
+.hero h1 em{color:#F3CFCD}
+.hero .hero__tag{font:400 clamp(1.05rem,2vw,1.25rem)/1.5 var(--body);margin:0 auto;max-width:52ch;color:#F2E5DC}
+.hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+.btn.light{background:#FBF5EE;color:#3B2A21}.btn.light:hover{background:#F3CFCD;color:#3B2A21}
+.btn.outline-light{background:transparent;color:#FBF5EE;border:1.5px solid rgba(251,245,238,.8)}.btn.outline-light:hover{background:#FBF5EE;color:#3B2A21}
+.hero + .wrap > .band:first-child{border-top:0}
+
+/* latest story */
+.lead{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;padding-block:4px 34px}
+.lead__cover{display:block}
+.lead .cover{aspect-ratio:3/2;border-radius:10px}
+.lead h3{font-size:clamp(1.7rem,3.8vw,2.6rem);line-height:1.08;margin:10px 0 12px}
+.lead h3 a{color:inherit;text-decoration:none}.lead h3 a:hover{color:var(--brown)}
+.lead p{margin:0 0 18px;color:var(--muted);font-size:1.05rem}
+.lead .pmeta{font-size:.72rem;margin:0}
+@media (max-width:760px){.lead{grid-template-columns:1fr}}
+
+/* post cards with photos */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:34px clamp(18px,3vw,30px);margin-bottom:38px}
+.pcard__link{display:block;text-decoration:none;color:inherit}
+.pcard .cover{aspect-ratio:3/2;border-radius:10px}
+.pcard .cover img{transition:transform .4s ease}
+.pcard__link:hover .cover img{transform:scale(1.03)}
+.pcard h3{font-size:1.32rem;line-height:1.18;margin:14px 0 6px}
+.pcard__link:hover h3{color:var(--brown)}
+.pcard__dek{margin:0 0 8px;color:var(--muted);font-size:.97rem;line-height:1.5}
+.pmeta{margin:0}
+.cover .gen .no{font-size:clamp(2.4rem,7vw,4rem)}
+
+/* section tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;margin-bottom:38px}
+.tile{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:230px;padding:20px;border-radius:12px;overflow:hidden;text-decoration:none;background:var(--tone-blush);color:var(--ink)}
+.tile.t-cocoa{background:var(--tone-cocoa)}.tile.t-sand{background:var(--tone-sand)}.tile.t-rose{background:var(--tone-rose)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .4s ease}
+.tile--photo{color:#FBF5EE}
+.tile--photo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(43,28,20,.9) 10%,rgba(43,28,20,.35) 75%,rgba(43,28,20,.15))}
+.tile:hover img{transform:scale(1.04)}
+.tile__name{font:500 1.45rem/1.15 var(--display)}
+.tile__blurb{font-size:.92rem;line-height:1.45;margin-top:6px;opacity:.92}
+.band-head{text-align:center}
+@media (prefers-reduced-motion:reduce){.pcard .cover img,.tile img{transition:none}}
 `;
 
 // ---------- page shell ----------
@@ -352,6 +401,10 @@ const entryLine = p => `<article class="entry">
 <span class="label meta"><span class="dot t-${p.section.tone}"></span> ${p.section.name} · ${p.minutes} min</span>
 </article>`;
 
+const postMeta = p => `<p class="pmeta label"><span class="dot t-${p.section.tone}"></span> ${p.section.name} · ${p.minutes} min read</p>`;
+const postCard = p => `<article class="pcard"><a class="pcard__link" href="${p.slug}.html">${cover(p)}<h3>${esc(p.title)}</h3></a>
+<p class="pcard__dek">${esc(p.subtitle || p.description || '')}</p>${postMeta(p)}</article>`;
+const postGrid = list => `<div class="pgrid">${list.map(postCard).join('\n')}</div>`;
 const newsletter = () => `<section class="news" aria-labelledby="news-h">
 <span class="label">Every Saturday</span>
 <h2 id="news-h">${esc(cfg.newsletterName)}</h2>
@@ -413,25 +466,36 @@ const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
 
 // Home
 {
-  const hero = `<section class="hero">
-<div><span class="label">Hi, I'm ${esc(cfg.author)}</span>
-<h1>Building an income stream with <em>AI</em>, one small system at a time</h1>
-<p>I'm a mom in my 30s building a little online business, so I can spend more of my days with my kid. AI does a lot of the heavy lifting: my blogs draft their own posts, and my guides and courses are built with Claude.</p>
-<p>This is where I show exactly how it all works, mistakes included.</p>
-<div class="ctas"><a class="btn" href="blog.html">Read the blog</a><a class="btn ghost" href="shop.html">Shop the guides</a></div></div>
-<div class="hero-img">${imgExists('home-hero.jpg') ? `<img src="images/home-hero.jpg" alt="A hand holding a cup of coffee next to an open laptop on a cream desk">` : `<div class="ph"><span>Built with AI, edited by a human.</span></div>`}</div>
+  const newest = newestFirst[0];
+  const heroImg = imgExists('home-hero.jpg') ? `<img class="hero__img" src="images/home-hero.jpg" alt="A hand holding a cup of coffee next to an open laptop on a cream desk" fetchpriority="high">` : '';
+  const hero = `<section class="hero${heroImg ? '' : ' hero--plain'}" aria-labelledby="hero-h">${heroImg}
+<div class="hero__inner"><p class="hero__kicker">A build log by ${esc(cfg.authorFullName || cfg.author)}</p>
+<h1 id="hero-h">Building an income stream with <em>AI</em>, one small system at a time</h1>
+<p class="hero__tag">I'm a mom building a little online business so I can spend more of my days with my kid. Here's exactly how it works, mistakes included.</p>
+<div class="hero__actions">${newest ? `<a class="btn light" href="${newest.slug}.html">Read the newest story</a>` : ''}<a class="btn outline-light" href="shop.html">Shop the guides</a></div></div>
 </section>`;
+  const lead = !newest ? '' : `<section class="band" aria-labelledby="lead-h"><div class="band-head"><div><span class="label">Every Saturday</span><h2 id="lead-h">The latest story</h2></div></div>
+<article class="lead"><a class="lead__cover" href="${newest.slug}.html">${cover(newest, true)}</a>
+<div class="lead__text">${postMeta(newest)}<h3><a href="${newest.slug}.html">${esc(newest.title)}</a></h3>
+<p>${esc(newest.subtitle || newest.description || '')}</p><a class="btn" href="${newest.slug}.html">Read the story</a></div></article></section>`;
+  const more = newestFirst.slice(1, 7);
+  const moreHtml = !more.length ? '' : `<section class="band" aria-labelledby="more-h"><div class="band-head"><div><span class="label">From the blog</span><h2 id="more-h">More to read</h2></div><a href="blog.html">All posts</a></div>${postGrid(more)}</section>`;
+  const tiles = `<section class="band" aria-labelledby="sec-h"><div class="band-head"><div><span class="label">Topics</span><h2 id="sec-h">Browse by section</h2></div></div>
+<div class="tiles">${SECTIONS.map(sec => {
+    const withImg = newestFirst.find(p => p.section === sec && imgExists(p.cover));
+    return `<a class="tile t-${sec.tone}${withImg ? ' tile--photo' : ''}" href="${sec.slug}.html">${withImg ? `<img src="${relImg(withImg.cover)}" alt="" loading="lazy">` : ''}<span class="tile__name">${sec.name}</span><span class="tile__blurb">${esc(sec.blurb)}</span></a>`;
+  }).join('')}</div></section>`;
   const pillars = `<div class="pillars">
 <div><span class="label">01</span><h3>Blogs that draft themselves</h3><p>Scheduled AI tasks research and write each post. I review, edit and publish.</p></div>
 <div><span class="label">02</span><h3>Products made with AI</h3><p>Interactive guides, trackers and courses, built with Claude from plain-language ideas.</p></div>
 <div><span class="label">03</span><h3>Honest, step by step</h3><p>No get-rich-quick promises. Just the real setup, so you can build your own.</p></div>
 </div>`;
-  const latest = newestFirst.slice(0, 3);
-  const body = `<div class="wrap">${hero}
-<section class="band" aria-labelledby="what-h"><div class="band-head"><div><span class="label">What I build</span><h2 id="what-h">A business that runs around family life</h2></div></div>${pillars}</section>
+  const body = `${hero}<div class="wrap">
+${lead}
 <section class="band" aria-labelledby="feat-h"><div class="band-head"><div><span class="label">New</span><h2 id="feat-h">Start with the course</h2></div><a href="shop.html">See everything in the shop</a></div>${featureCard(featured)}</section>
-<section class="band" aria-labelledby="log-h"><div class="band-head"><div><span class="label">Every Saturday</span><h2 id="log-h">Latest from the blog</h2></div><a href="blog.html">All posts</a></div>
-<div class="log" style="padding-top:0">${latest.map(entryLine).join('\n') || '<p class="label">The first post lands on Saturday.</p>'}</div></section>
+${moreHtml}
+${tiles}
+<section class="band" aria-labelledby="what-h"><div class="band-head"><div><span class="label">What I build</span><h2 id="what-h">A business that runs around family life</h2></div></div>${pillars}</section>
 <section class="band" aria-labelledby="shop-h"><div class="band-head"><div><span class="label">The shop</span><h2 id="shop-h">Guides and courses</h2></div><a href="shop.html">See all ${products.length}</a></div>
 <div class="grid">${others.slice(0, 3).map(productCard).join('')}</div></section>
 <div class="read">${newsletter()}</div></div>`;
@@ -443,7 +507,7 @@ const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
 {
   const body = `<div class="wrap"><div class="page"><span class="label">The blog</span><h1>All posts</h1><p class="tagline" style="max-width:60ch">A new post every Saturday on how I run my business with AI. Pick a topic or scroll the whole log.</p></div>
 ${filterBar('all')}
-<section class="log" style="padding-top:0">${newestFirst.map(entryLine).join('\n')}</section>
+${postGrid(newestFirst)}
 <div class="read">${newsletter()}</div></div>`;
   write('blog.html', shell({ title: `Blog | ${cfg.title}`, description: 'Every post on building a small online business with AI: tools, behind the scenes, income experiments and playbooks.', file: 'blog.html', current: 'blog', body }));
 }
@@ -463,7 +527,7 @@ for (const s of SECTIONS) {
   const list = newestFirst.filter(p => p.section === s);
   const body = `<div class="wrap"><div class="page"><span class="label"><span class="dot t-${s.tone}"></span> Section</span><h1>${s.name}</h1><p class="tagline" style="max-width:60ch">${s.blurb}</p></div>
 ${filterBar(s.slug)}
-<section class="log" style="padding-top:0">${list.map(entryLine).join('\n') || '<p>The first entry in this section lands on a Saturday soon.</p>'}</section>
+${list.length ? postGrid(list) : '<p style="text-align:center">The first entry in this section lands on a Saturday soon.</p>'}
 <div class="read">${newsletter()}</div></div>`;
   write(`${s.slug}.html`, shell({ title: `${s.name} | ${cfg.title}`, description: s.blurb, file: `${s.slug}.html`, current: 'blog', body }));
 }
@@ -487,7 +551,7 @@ ${tools}
 ${tall ? `<div class="tall-cover"><img src="${relImg(p.cover)}" alt="${esc(p.cover_alt || p.title)}"></div></div>` : `<div class="post-cover">${cover(p, true)}</div>`}
 <div class="read prose">${html}</div>
 <div class="read">${pinBlock(p)}${productBox(p)}${newsletter()}
-${related.length ? `<section class="related"><h2 style="font-size:1.4rem;margin:0 0 4px">Keep reading</h2>${related.map(entryLine).join('')}</section>` : ''}
+${related.length ? `<section class="related"><h2 style="font-size:1.4rem;margin:0 0 4px">Keep reading</h2>${postGrid(related)}</section>` : ''}
 </div></div></article>`;
   write(`${p.slug}.html`, shell({ title: `${p.title} | ${cfg.title}`, description: p.description, file: `${p.slug}.html`, current: 'blog', body, type: 'article', noindex: !!p.draft,
     ogImage: tall && firstLandscape ? relImg(firstLandscape) : imgExists(p.cover) ? relImg(p.cover) : null,

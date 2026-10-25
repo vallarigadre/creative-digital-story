@@ -2,7 +2,6 @@
 title: "Etsy or your own storefront? Where to sell your first digital product"
 subtitle: "An honest side-by-side of Etsy and a link-in-bio shop like Beacons: the real fees, who brings the buyers, and a five-question way to choose."
 date: 2026-10-25
-draft: true
 slug: etsy-or-own-storefront
 category: Playbooks
 description: "Etsy or your own shop for your first digital product? Real 2026 fees, who brings the buyers, AI rules and a simple 5-question way to decide."

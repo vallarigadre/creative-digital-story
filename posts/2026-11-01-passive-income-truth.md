@@ -2,7 +2,7 @@
 title: "The truth about \"passive income\" from blogging, and what mine really takes each week"
 subtitle: "It's not 100% passive, it's not fast, and I still love it. Here's the honest version, hour by hour."
 date: 2026-11-01
-draft: true
+draft: false
 slug: passive-income-truth
 category: Behind the Build
 description: "What a low-maintenance AI blog really takes: under 2 hours on post days, the checks I never skip, and why the money grows slowly."
@@ -12,7 +12,7 @@ pin_title: "The Truth About Passive Income From Blogging"
 pin_description: "What a low-maintenance AI blog really takes each week: under 2 hours on post days, the product checks I never skip, and why the money grows slowly. An honest look from a mom building income with AI."
 cover: "/images/passive-income-truth.jpg"
 cover_shape: tall
-cover_alt: "A vintage brass hourglass beside a toddler's wooden stacking rings on a cream windowsill in soft morning light"
+cover_alt: "A woman typing on a laptop beside a heart-print coffee mug while a toddler plays with wooden blocks in the sunlit background"
 product:
   name: "Make Money with an Automated Affiliate Blog"
   blurb: "If you want a blog that drafts its own posts while you keep the parts that matter, this course walks you through building one step by step, with a hands-on exercise in every chapter."

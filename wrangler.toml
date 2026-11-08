@@ -1,0 +1,10 @@
+name = "creative-digital-story"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+
+# The D1 database that keeps newsletter sign-ups and reader stats.
+# Fill in database_id after creating the database "creative-digital-story" in Cloudflare (Storage & Databases > D1).
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "creative-digital-story"
+# database_id = ""

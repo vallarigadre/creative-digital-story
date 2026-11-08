@@ -9,6 +9,10 @@ const { marked } = require('marked');
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, 'dist');
+// On Cloudflare Pages (CF_PAGES is set there) the signup form posts to /api/subscribe and reader stats are on.
+// On Netlify the old Netlify Forms setup is kept, so the same code builds on either host.
+const ON_CF = !!process.env.CF_PAGES;
+const T_VERSION = require('crypto').createHash('md5').update(fs.readFileSync(path.join(ROOT, 'static', 't.js'))).digest('hex').slice(0, 10);
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const IMG_DIR = path.join(ROOT, 'static', 'images');
 const products = JSON.parse(fs.readFileSync(path.join(ROOT, 'products.json'), 'utf8'));
@@ -358,7 +362,7 @@ ${ogImage ? `<meta property="og:image" content="${cfg.url}/${ogImage}">\n<meta n
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap">
 <style>${CSS}</style>
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
-${analytics}
+${analytics}${ON_CF && !noindex ? `\n<script defer src="/t.js?v=${T_VERSION}"></script>` : ''}
 </head>
 <body>
 <div class="wrap">
@@ -374,13 +378,13 @@ ${body}
 <nav aria-label="Footer"><a href="blog.html">Blog</a><a href="shop.html">Shop</a><a href="about.html">About</a><a href="disclosure.html">Disclosure</a><a href="privacy.html">Privacy</a><a href="feed.xml">RSS</a></nav>
 </div></footer></div>
 <script>
-document.querySelectorAll('form[data-netlify]').forEach(function(f){f.addEventListener('submit',function(e){
+document.querySelectorAll('form[data-signup]').forEach(function(f){f.addEventListener('submit',function(e){
   e.preventDefault();
   var box=f.parentNode, ok=box.querySelector('.ok'), err=box.querySelector('.err'), btn=f.querySelector('button');
   if(ok)ok.hidden=true; if(err)err.hidden=true;
   if(location.protocol==='file:'){if(ok)ok.hidden=false;f.reset();return;}
   if(btn){btn.disabled=true;btn.textContent='Joining...';}
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
+  fetch(${ON_CF ? "'/api/subscribe'" : "'/'"},{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},body:new URLSearchParams(new FormData(f)).toString()})
     .then(function(r){if(!r.ok)throw new Error(r.status);if(ok)ok.hidden=false;f.reset();})
     .catch(function(){if(err)err.hidden=false;})
     .then(function(){if(btn){btn.disabled=false;btn.textContent='Join the list';}});
@@ -409,8 +413,8 @@ const newsletter = () => `<section class="news" aria-labelledby="news-h">
 <span class="label">Every Saturday</span>
 <h2 id="news-h">${esc(cfg.newsletterName)}</h2>
 <p>One new build log a week, plus the prompts and tools behind it. No hype, no get-rich-quick promises.</p>
-<form name="saturday-build" method="POST" data-netlify="true" netlify-honeypot="company" action="thanks.html">
-<input type="hidden" name="form-name" value="saturday-build">
+${ON_CF ? `<form name="saturday-build" method="POST" action="/api/subscribe" data-signup>` : `<form name="saturday-build" method="POST" data-netlify="true" netlify-honeypot="company" action="thanks.html" data-signup>
+<input type="hidden" name="form-name" value="saturday-build">`}
 <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
 <label class="hp" for="email">Email address</label>
 <input id="email" type="email" name="email" placeholder="Your email address" required autocomplete="email">
@@ -462,6 +466,8 @@ function pinBlock(p) {
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'images'), { recursive: true });
 if (fs.existsSync(IMG_DIR)) for (const f of fs.readdirSync(IMG_DIR)) fs.copyFileSync(path.join(IMG_DIR, f), path.join(OUT, 'images', f));
+// Everything else in static/ (the reader tracker, Cloudflare headers, the private stats page) is copied as is.
+for (const f of fs.readdirSync(path.join(ROOT, 'static'))) if (f !== 'images') fs.cpSync(path.join(ROOT, 'static', f), path.join(OUT, f), { recursive: true });
 const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
 
 // Home
@@ -573,7 +579,7 @@ for (const f of fs.readdirSync(pagesDir).filter(f => f.endsWith('.md'))) {
 // Sitemap, robots, RSS
 const urls = ['', 'blog', 'shop', ...SECTIONS.map(s => s.slug), 'about', ...posts.map(p => p.slug)];
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${cfg.url}/${u}</loc></url>`).join('\n')}\n</urlset>\n`);
-write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${cfg.url}/sitemap.xml\n`);
+write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${cfg.url}/sitemap.xml\n`);
 write('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${esc(cfg.title)}</title><link>${cfg.url}</link><description>${esc(cfg.tagline)}</description>\n${newestFirst.map(p => `<item><title>${esc(p.title)}</title><link>${cfg.url}/${p.slug}</link><guid>${cfg.url}/${p.slug}</guid><pubDate>${new Date(p.date + 'T03:30:00Z').toUTCString()}</pubDate><description>${esc(p.description)}</description></item>`).join('\n')}\n</channel></rss>\n`);
 
 console.log(`Built home, blog, shop, ${posts.length} posts, ${drafts.length} drafts, ${SECTIONS.length} sections into dist/`);

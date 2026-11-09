@@ -11,7 +11,7 @@ pin_title: "Etsy or Your Own Shop? Where to Sell Digital Products"
 pin_description: "Where should you sell your first digital product? An honest look at Etsy vs your own storefront: real fees on a $15 product, who brings the buyers, Etsy's AI rules and a 5-question checklist to decide."
 cover: "/images/etsy-or-own-storefront.jpg"
 cover_shape: tall
-cover_alt: "A woman wrapping kraft paper parcels with twine on a rug while her toddler touches one"
+cover_alt: "Kraft paper parcels tied with blush ribbon on a wooden table, with a blank gift tag and a tablet showing a blurred shop page"
 product:
   name: "Etsy Success Guide 2026 Edition"
   blurb: "If Etsy is where you're starting, my Etsy Success Guide walks you through setting up and growing an Etsy shop for digital products, from your first listings to your first sales."

@@ -12,7 +12,7 @@ pin_title: "How I Make Digital Products With AI (Step by Step)"
 pin_description: "From a blank chat to a sellable guide: the 7-step process I use to build interactive digital products with AI, no coding required."
 cover: "/images/digital-products-with-ai.jpg"
 cover_shape: tall
-cover_alt: "A woman with her toddler on her lap at a round white table, seen from behind, working on a laptop with a colorful tracker"
+cover_alt: "Printed planner and tracker pages fanned out on a linen table beside a tablet showing the same tracker and a mug of tea"
 product:
   name: "Interactive Digital Products Guide"
   blurb: "Ready to make your own? My Interactive Digital Products Guide walks you through creating clickable tools, trackers and guides with AI, the same way I make mine."

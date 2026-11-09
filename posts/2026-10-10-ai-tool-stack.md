@@ -12,7 +12,7 @@ pin_title: "The AI Tool Stack I Use to Run My Business Solo"
 pin_description: "The 8 tools behind my automated blogs and AI-made digital products, what each one does, and the order to learn them in."
 cover: "/images/ai-tool-stack.jpg"
 cover_shape: tall
-cover_alt: "Looking down at a laptop, phone and notebook on a white bed, with a toddler's knit booties at the edge of the frame"
+cover_alt: "A cream desk with a laptop showing a blurred dashboard, a phone, an open notebook, an iced latte and dried pampas grass"
 product:
   name: "Make Money with an Automated Affiliate Blog"
   blurb: "Want to see this stack working together? My step-by-step course shows you how to build an automated affiliate blog with Claude, ChatGPT, Netlify and Pinterest, with a hands-on exercise in every chapter."

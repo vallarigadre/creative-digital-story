@@ -11,7 +11,7 @@ pin_title: "Etsy or Your Own Shop? Where to Sell Digital Products"
 pin_description: "Where should you sell your first digital product? An honest look at Etsy vs your own storefront: real fees on a $15 product, who brings the buyers, Etsy's AI rules and a 5-question checklist to decide."
 cover: "/images/etsy-or-own-storefront.jpg"
 cover_shape: tall
-cover_alt: "A small wooden market stall on a linen-covered table, stacked with kraft paper parcels tied with twine, in soft morning light"
+cover_alt: "A woman wrapping kraft paper parcels with twine on a rug while her toddler touches one"
 product:
   name: "Etsy Success Guide 2026 Edition"
   blurb: "If Etsy is where you're starting, my Etsy Success Guide walks you through setting up and growing an Etsy shop for digital products, from your first listings to your first sales."
@@ -49,7 +49,7 @@ There's also a rule every AI-assisted maker should know. Etsy's Creativity Stand
 
 Honestly, I think that rule is fair. It just means "I asked AI for 50 planners and listed them all" isn't a business plan on Etsy. Something you designed for a real need, with AI as your helper, is.
 
-![Hands holding two kraft paper envelopes over a vintage brass balance scale on a wooden table, in soft overcast light](/images/etsy-or-own-storefront-2.jpg)
+![A woman's hands holding two kraft envelopes, one in each hand, over a white table](/images/etsy-or-own-storefront-2.jpg)
 
 ## What your own storefront gives you, and what it asks in return
 
@@ -84,7 +84,7 @@ A few things jump out:
 
 The takeaway: at the beginning, the fee table shouldn't be what decides it for you.
 
-![An overhead flat lay of a small calculator with a blank display, a few coins, a pencil and a folded paper notebook on a cream linen cloth](/images/etsy-or-own-storefront-3.jpg)
+![Looking down at a calculator, coins, a pencil and a notebook on a white table with an iced latte](/images/etsy-or-own-storefront-3.jpg)
 
 ## Five questions to help you decide
 
@@ -119,7 +119,7 @@ Don't invent numbers about my sales or traffic. If you mention fees, remind me t
 
 The last line matters. AI tools love to sound confident about fees and rules that may have changed since they were trained. Always check the actual fee page before you decide.
 
-![A wooden front door standing open onto a sunlit porch at golden hour, with a woven basket of parcels wrapped in kraft paper beside it](/images/etsy-or-own-storefront-4.jpg)
+![A woman seen from behind picking up a basket of kraft paper parcels by an open front door at golden hour](/images/etsy-or-own-storefront-4.jpg)
 
 ## You don't have to choose forever
 

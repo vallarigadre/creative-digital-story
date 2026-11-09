@@ -12,7 +12,7 @@ pin_title: "The AI Tool Stack I Use to Run My Business Solo"
 pin_description: "The 8 tools behind my automated blogs and AI-made digital products, what each one does, and the order to learn them in."
 cover: "/images/ai-tool-stack.jpg"
 cover_shape: tall
-cover_alt: "A tidy desk from above with a laptop, a phone and a notebook listing tool names in neat handwriting"
+cover_alt: "Looking down at a laptop, phone and notebook on a white bed, with a toddler's knit booties at the edge of the frame"
 product:
   name: "Make Money with an Automated Affiliate Blog"
   blurb: "Want to see this stack working together? My step-by-step course shows you how to build an automated affiliate blog with Claude, ChatGPT, Netlify and Pinterest, with a hands-on exercise in every chapter."
@@ -50,7 +50,7 @@ If I could only keep one tool, it would be this one. Claude does three very diff
 
 I use ChatGPT for one job: images. Each blog post comes with written photo prompts, and I paste them into ChatGPT to create the cover and in-story photos. The trick that made the biggest difference was putting the exact size and the style of shot in every prompt, so images come out consistent and sharp.
 
-![An overhead view of a laptop showing a grid of generated lifestyle photos beside a mug and a notebook](/images/ai-tool-stack-2.jpg)
+![A woman's hand on a laptop showing a blurred grid of photos, next to an iced latte in a ribbed glass](/images/ai-tool-stack-2.jpg)
 
 ## Canva: the design studio
 
@@ -73,7 +73,7 @@ Beacons is my storefront. It handles checkout and delivery for digital products 
 
 Pinterest behaves more like a search engine than a social network. People search for ideas, and a good pin can keep sending visitors for months. That long life is exactly why I pair a weekly blog post with a week of pins: each post gives me several fresh pins, and each pin points back to the post.
 
-![A styled desk with a tablet showing a board of pins and a printed weekly pin schedule](/images/ai-tool-stack-3.jpg)
+![A woman on a sofa holding her phone with a blurred grid of pins, beside a printed weekly schedule and a mug](/images/ai-tool-stack-3.jpg)
 
 ## Medium: the second shelf
 

@@ -12,7 +12,7 @@ pin_title: "How to Make $1,000 a Month With Amazon Affiliate"
 pin_description: "The real math behind $1,000 a month from an affiliate blog: Amazon commissions, Pinterest traffic and display ads working together, plus an honest month-by-month timeline. No hype, just the plan."
 cover: "/images/amazon-affiliate-1000-a-month.jpg"
 cover_shape: tall
-cover_alt: "A laptop on a round wooden cafe table on a sunny terrace above a blue Italian lake, with a cappuccino, orange juice, a red rose and an open notebook"
+cover_alt: "A woman at a round white table with a laptop, iced latte, notebook and a jar of coins, her face cropped out"
 product:
   name: "Make Money with an Automated Affiliate Blog"
   blurb: "If you want to build the blog side of this plan without writing every post yourself, this course walks you through it step by step, from your niche to Pinterest, with a hands-on exercise in every chapter."

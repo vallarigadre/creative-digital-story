@@ -12,7 +12,7 @@ pin_title: "How I Built a Blog That Writes Itself With AI"
 pin_description: "The real system behind my automated affiliate blog: a scheduled AI task that researches, writes and picks products twice a week, plus the human checks that keep it good."
 cover: "/images/blog-that-writes-itself.jpg"
 cover_shape: tall
-cover_alt: "A laptop on a cream desk showing a blog draft, with a coffee cup and a notebook of handwritten checklists"
+cover_alt: "A woman on a sofa with a laptop on her knees, only her hair showing above the screen, a mug of coffee on the armrest"
 product:
   name: "Make Money with an Automated Affiliate Blog"
   blurb: "My step-by-step course on building this exact system: the website, the master brief, the scheduled task, images, SEO and Pinterest, with a hands-on exercise in every chapter."
@@ -33,7 +33,7 @@ Affiliate blogs live or die on consistency. Google and Pinterest both reward sit
 
 The core of the system is a **scheduled task in Claude**. It's a set of instructions that runs by itself every Tuesday and Friday morning, starts a fresh session, does the whole job from scratch and sends me the results.
 
-![A close-up of a phone screen showing a scheduled task notification next to a cup of tea](/images/blog-that-writes-itself-2.jpg)
+![A woman's hands holding a phone with a blurred notification and a cup of tea by the window](/images/blog-that-writes-itself-2.jpg)
 
 ## What the AI does on its own
 
@@ -60,7 +60,7 @@ This is the part most "automate your blog" videos skip. My job each Tuesday and 
 
 To make the link swap painless, I had Claude build me a small checklist page that lists every product in a post with a box to paste my own link. It sounds like a tiny thing, but it turned the most tedious step into a few minutes of copy and paste.
 
-![An overhead flat lay of a notebook with a handwritten publishing checklist, a pen and sticky notes](/images/blog-that-writes-itself-3.jpg)
+![A woman writing a checklist in a notebook on a white bed while a toddler's hand reaches for the pen](/images/blog-that-writes-itself-3.jpg)
 
 ## Three mistakes I made (so you don't have to)
 

@@ -473,7 +473,7 @@ const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
 // Home
 {
   const newest = newestFirst[0];
-  const heroImg = imgExists('home-hero.jpg') ? `<img class="hero__img" src="images/home-hero.jpg" alt="A hand holding a cup of coffee next to an open laptop on a cream desk" fetchpriority="high">` : '';
+  const heroImg = imgExists('home-hero.jpg') ? `<img class="hero__img" src="images/home-hero.jpg" alt="A woman in a cream knit lounge set sitting cross-legged on a sofa, her face hidden behind the laptop she is holding" fetchpriority="high">` : '';
   const hero = `<section class="hero${heroImg ? '' : ' hero--plain'}" aria-labelledby="hero-h">${heroImg}
 <div class="hero__inner"><p class="hero__kicker">A build log by ${esc(cfg.authorFullName || cfg.author)}</p>
 <h1 id="hero-h">Building an income stream with <em>AI</em>, one small system at a time</h1>

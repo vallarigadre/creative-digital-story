@@ -11,7 +11,7 @@ pin_title: "Pinterest for a New Blog: My 30-Day Plan"
 pin_description: "A simple 30-day Pinterest plan for a new blog: set up a business account, claim your site, build keyword boards and create fresh pins each week, with an AI prompt to write your pin titles."
 cover: "/images/pinterest-for-new-blog.jpg"
 cover_shape: tall
-cover_alt: "A cream desk with a tablet showing a grid of soft pink and beige pin designs, a coffee cup and a paper planner"
+cover_alt: "A mirror selfie of a woman holding her toddler on her hip, her phone covering her face"
 product:
   name: "Make Money with an Automated Affiliate Blog"
   blurb: "Pinterest is one chapter of the bigger system. My course walks you through the whole automated affiliate blog: niche, website, master brief, affiliate products, images, SEO and Pinterest, with a hands-on exercise in every chapter."
@@ -44,7 +44,7 @@ This week is all settings and no pins. It's a little boring, and it makes everyt
 
 **4. Add your website link to your profile.** It's a small thing, and it gives anyone who finds you a way back to the blog.
 
-![A laptop on a cream desk showing a profile settings page, with a cup of tea and a notebook beside it](/images/pinterest-for-new-blog-2.jpg)
+![Looking down at a laptop on a woman's lap on a sofa, with a cup of tea beside her](/images/pinterest-for-new-blog-2.jpg)
 
 ## Week 2: pick your keywords and build your boards
 
@@ -83,7 +83,7 @@ A few design rules that save time in Canva:
 
 A note on AI images: Pinterest labels images it detects as AI generated or AI modified, and it has said it will let people choose to see fewer AI pins in some categories. I make my blog photos with AI, so I keep them realistic and useful rather than fantastical, and I make sure the post behind the pin is genuinely helpful. A beautiful pin that leads to a thin page doesn't help anyone.
 
-![An overhead flat lay of printed pin designs in cream, blush and brown tones arranged on a wooden desk](/images/pinterest-for-new-blog-3.jpg)
+![A woman's hand holding up one of several printed pin designs laid out on a bed](/images/pinterest-for-new-blog-3.jpg)
 
 ## Week 4: write titles and descriptions with AI (then fix them)
 
@@ -124,7 +124,7 @@ Once the setup weeks are done, Pinterest becomes a single weekly session. Here's
 
 That's it. No daily pinning marathons. The trick is that the routine is small enough to survive a sick kid or a busy week at work.
 
-![A wide desk scene at golden hour with a closed laptop, a paper weekly planner and a vase of dried flowers](/images/pinterest-for-new-blog-4.jpg)
+![A closed laptop, paper planner and dried flowers beside a woman's legs in knit pants and fuzzy slippers at golden hour](/images/pinterest-for-new-blog-4.jpg)
 
 ## Where this fits in an automated blog
 

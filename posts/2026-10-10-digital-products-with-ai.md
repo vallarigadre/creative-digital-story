@@ -12,7 +12,7 @@ pin_title: "How I Make Digital Products With AI (Step by Step)"
 pin_description: "From a blank chat to a sellable guide: the 7-step process I use to build interactive digital products with AI, no coding required."
 cover: "/images/digital-products-with-ai.jpg"
 cover_shape: tall
-cover_alt: "A laptop showing a colorful interactive tracker on screen, beside a cup of coffee and a printed planner page"
+cover_alt: "A woman with her toddler on her lap at a round white table, seen from behind, working on a laptop with a colorful tracker"
 product:
   name: "Interactive Digital Products Guide"
   blurb: "Ready to make your own? My Interactive Digital Products Guide walks you through creating clickable tools, trackers and guides with AI, the same way I make mine."
@@ -55,7 +55,7 @@ this worth paying for.
 
 Answering those questions forces you to make the decisions you'd otherwise skip, and the build that follows is far better for it.
 
-![A notebook page with handwritten answers to product questions next to a laptop](/images/digital-products-with-ai-2.jpg)
+![A woman's hands writing notes in a notebook next to a laptop and a coffee](/images/digital-products-with-ai-2.jpg)
 
 ## Step 3: Outline before you build
 
@@ -83,7 +83,7 @@ My interactive products live on Netlify, which hosts simple web pages for free. 
 
 Then comes the packaging, which matters more than people expect: a clear product name, three or four mockup images made in Canva, and a description that leads with the job it does, not the features.
 
-![A styled flat lay of product mockup images printed out and arranged on a desk](/images/digital-products-with-ai-3.jpg)
+![A woman's hands arranging printed planner pages on a bed beside her toddler's feet](/images/digital-products-with-ai-3.jpg)
 
 ## Step 7: List it and point people to it
 

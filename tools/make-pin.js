@@ -45,7 +45,7 @@ h1{font:600 ${size}px/1.08 F;color:#3B2A21;letter-spacing:-.01em}
 .pill{display:inline-block;background:#FBF5EE;color:#5E3720;font:700 26px N;padding:16px 34px;border-radius:999px;box-shadow:0 6px 24px rgba(59,42,33,.18)}
 </style></head><body><div class="bg"></div><div class="fade"></div>
 <div class="top"><p class="label">Creative Digital Story</p><div class="rule"></div><h1>${esc(title)}</h1>${p.pin_subtitle ? `<p class="sub">${esc(p.pin_subtitle)}</p>` : ''}</div>
-<div class="foot"><span class="pill">creativedigitalstory.netlify.app</span></div></body></html>`;
+<div class="foot"><span class="pill">creativedigitalstory.com</span></div></body></html>`;
 }
 
 (async () => {

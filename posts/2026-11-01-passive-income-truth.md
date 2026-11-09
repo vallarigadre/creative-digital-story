@@ -12,7 +12,7 @@ pin_title: "The Truth About Passive Income From Blogging"
 pin_description: "What a low-maintenance AI blog really takes each week: under 2 hours on post days, the product checks I never skip, and why the money grows slowly. An honest look from a mom building income with AI."
 cover: "/images/passive-income-truth.jpg"
 cover_shape: tall
-cover_alt: "A woman typing on a laptop beside a heart-print coffee mug while a toddler plays with wooden blocks in the sunlit background"
+cover_alt: "A toddler stacking wooden blocks on a rug while her mom works on a laptop on the sofa behind her"
 product:
   name: "Make Money with an Automated Affiliate Blog"
   blurb: "If you want a blog that drafts its own posts while you keep the parts that matter, this course walks you through building one step by step, with a hands-on exercise in every chapter."
@@ -49,7 +49,7 @@ Here's the order I work in:
 4. **I swap in my links and check every product.** This is the one I'll tell you more about in a second, because it's the most important part.
 5. **Pins, Threads and Instagram.** AI makes the pin designs, the Threads write-ups and the Instagram carousel, and I direct the look and the words. Then they get scheduled.
 
-![A pair of hands checking off a printed product list with a pencil beside a stack of plain kraft shipping boxes](/images/passive-income-truth-2.jpg)
+![A woman's hands checking off a printed product list with a pencil beside kraft boxes](/images/passive-income-truth-2.jpg)
 
 That's it. Less than two hours, mostly in small pieces, with a toddler in the room. Which brings me to the part I refuse to automate.
 
@@ -85,7 +85,7 @@ There's also a practical hurdle worth knowing if you're starting with Amazon: ne
 
 My first money target is $1,000. Not $1,000 a week. Not a screenshot of a dashboard full of numbers. Just a clear first milestone that tells me the system works and is worth growing. Setting a small, honest target has kept me from comparing my month two to someone else's year five.
 
-![A row of tiny seedlings sprouting in terracotta pots on a wooden ledge under overcast window light](/images/passive-income-truth-3.jpg)
+![A woman's hand watering a row of small seedlings in terracotta pots on a windowsill](/images/passive-income-truth-3.jpg)
 
 If you want to know what keeps me going through the slow part, it's not the money yet. It's the next thing.
 
@@ -110,7 +110,7 @@ Afternoon nap time, lunch time, play time: I'm there for all of it. My working m
 
 That's what I wanted when I started building income with AI. Not a business that runs with zero effort, because that doesn't exist. A business that fits around the life I actually want.
 
-![A soft play corner with wooden blocks and a folded knit blanket on a rug, lit by warm golden hour sun](/images/passive-income-truth-4.jpg)
+![A toddler playing with wooden blocks on a rug at golden hour, her mom's hand resting beside her](/images/passive-income-truth-4.jpg)
 
 ## So, is it worth it?
 

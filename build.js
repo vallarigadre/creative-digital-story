@@ -468,7 +468,12 @@ fs.mkdirSync(path.join(OUT, 'images'), { recursive: true });
 if (fs.existsSync(IMG_DIR)) for (const f of fs.readdirSync(IMG_DIR)) fs.copyFileSync(path.join(IMG_DIR, f), path.join(OUT, 'images', f));
 // Everything else in static/ (the reader tracker, Cloudflare headers, the private stats page) is copied as is.
 for (const f of fs.readdirSync(path.join(ROOT, 'static'))) if (f !== 'images') fs.cpSync(path.join(ROOT, 'static', f), path.join(OUT, f), { recursive: true });
-const write = (f, html) => fs.writeFileSync(path.join(OUT, f), html);
+// Every image link gets ?v=<short fingerprint of the file>, so when a photo is replaced
+// browsers fetch the new one straight away instead of showing the old cached copy.
+const imgVer = {};
+const verOf = n => imgVer[n] ??= (fs.existsSync(path.join(IMG_DIR, n)) ? require('crypto').createHash('md5').update(fs.readFileSync(path.join(IMG_DIR, n))).digest('hex').slice(0, 8) : '');
+const versionImgs = html => html.replace(/(images\/([\w.-]+\.(?:jpe?g|png|webp)))(?=["')\s])/gi, (m, all, n) => verOf(n) ? `${all}?v=${verOf(n)}` : all);
+const write = (f, html) => fs.writeFileSync(path.join(OUT, f), f.endsWith('.html') ? versionImgs(html) : html);
 
 // Home
 {

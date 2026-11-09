@@ -9,3 +9,11 @@
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# The site moved to Cloudflare Pages at creativedigitalstory.com on 9 Nov 2026.
+# This Netlify copy now only redirects old links (old pins, Threads posts, Medium) to the new address.
+[[redirects]]
+  from = "/*"
+  to = "https://creativedigitalstory.com/:splat"
+  status = 301
+  force = true

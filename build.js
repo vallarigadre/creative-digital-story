@@ -493,8 +493,10 @@ const write = (f, html) => fs.writeFileSync(path.join(OUT, f), f.endsWith('.html
   const moreHtml = !more.length ? '' : `<section class="band" aria-labelledby="more-h"><div class="band-head"><div><span class="label">From the blog</span><h2 id="more-h">More to read</h2></div><a href="blog.html">All posts</a></div>${postGrid(more)}</section>`;
   const tiles = `<section class="band" aria-labelledby="sec-h"><div class="band-head"><div><span class="label">Topics</span><h2 id="sec-h">Browse by section</h2></div></div>
 <div class="tiles">${SECTIONS.map(sec => {
-    const withImg = newestFirst.find(p => p.section === sec && imgExists(p.cover));
-    return `<a class="tile t-${sec.tone}${withImg ? ' tile--photo' : ''}" href="${sec.slug}.html">${withImg ? `<img src="${relImg(withImg.cover)}" alt="" loading="lazy">` : ''}<span class="tile__name">${sec.name}</span><span class="tile__blurb">${esc(sec.blurb)}</span></a>`;
+    // Photo: the newest post's cover in this section, or static/images/section-<slug>.jpg for a section with no posts yet.
+    const post = newestFirst.find(p => p.section === sec && imgExists(p.cover));
+    const tileImg = post ? post.cover : imgExists(`section-${sec.slug}.jpg`) ? `section-${sec.slug}.jpg` : null;
+    return `<a class="tile t-${sec.tone}${tileImg ? ' tile--photo' : ''}" href="${sec.slug}.html">${tileImg ? `<img src="${relImg(tileImg)}" alt="" loading="lazy">` : ''}<span class="tile__name">${sec.name}</span><span class="tile__blurb">${esc(sec.blurb)}</span></a>`;
   }).join('')}</div></section>`;
   const pillars = `<div class="pillars">
 <div><span class="label">01</span><h3>Blogs that draft themselves</h3><p>Scheduled AI tasks research and write each post. I review, edit and publish.</p></div>

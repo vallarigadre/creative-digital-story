@@ -6,7 +6,32 @@ import { onRequestGet as statsGate } from "./stats.js";
 
 const EMAIL = /^[^\s@<>"]{1,64}@[^\s@<>"]{1,190}\.[a-z]{2,}$/i;
 
-export async function onRequestPost({ request, env }) {
+// Emails V about each new sign-up through Web3Forms (free). The access key is tied to
+// creativedigitalstory@gmail.com, where the emails go. Web3Forms keys are meant to be public
+// (they only let someone send a message to that inbox), so it can live here; a WEB3FORMS_KEY
+// variable in the Cloudflare Pages settings overrides it.
+const WEB3FORMS_KEY = "";
+async function notify(env, email, page) {
+  const key = env.WEB3FORMS_KEY || WEB3FORMS_KEY;
+  if (!key) return;
+  try {
+    const r = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({
+        access_key: key,
+        subject: "New Saturday Build sign-up: " + email,
+        from_name: "Creative Digital Story",
+        message: `${email} just joined The Saturday Build.\nSigned up on: https://creativedigitalstory.com${page}\nTime: ${new Date().toISOString()}`,
+      }),
+    });
+    if (!r.ok) console.error("notify failed", r.status, await r.text());
+  } catch (e) {
+    console.error("notify failed", e);
+  }
+}
+
+export async function onRequestPost({ request, env, waitUntil }) {
   const wantsJson = (request.headers.get("accept") || "").includes("application/json");
   const done = (ok, status) => wantsJson
     ? Response.json({ ok }, { status })
@@ -18,8 +43,9 @@ export async function onRequestPost({ request, env }) {
     if (!EMAIL.test(email)) return done(false, 400);
     const page = new URL(request.headers.get("referer") || "/", request.url).pathname.slice(0, 200);
     await ensureTables(env.DB);
-    await env.DB.prepare(`INSERT OR IGNORE INTO subscribers (email, created, page) VALUES (?,?,?)`)
+    const res = await env.DB.prepare(`INSERT OR IGNORE INTO subscribers (email, created, page) VALUES (?,?,?)`)
       .bind(email, new Date().toISOString(), page).run();
+    if (res.meta && res.meta.changes) waitUntil(notify(env, email, page)); // only for new addresses
     return done(true, 200);
   } catch (e) {
     console.error("signup failed", e);

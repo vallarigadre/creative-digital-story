@@ -1,5 +1,14 @@
 # Creative Digital Story: photo style
 
+## Mix the photos (V, 9 Nov 2026)
+
+Not every photo shows the woman. Mix two kinds so the blog doesn't look repetitive:
+
+- People photos: the CDS mom (and sometimes her toddler) as described below.
+- Styled still-life photos with no people, in the same look as the shop images: a warm desk or table scene with a tablet or laptop showing soft blush planner or pin designs, a linen pin board of photos, kraft gift parcels with blush ribbon, notebooks, a ribbed mug, dried flowers and gypsophila, gold clips, warm golden light, cream, blush and warm wood tones.
+
+Per post: 2 people photos and 2 still-life photos. Covers alternate week to week: if the newest published cover shows the woman, the next cover is a still life, and the other way round.
+
 Every blog photo shows the same woman (the CDS mom) and, in some photos, her toddler daughter. They are made in ChatGPT. Keep all images for one post in one ChatGPT chat. If you can, attach `brand/cds-woman-reference.jpg` (the home page photo) at the start of a new chat as the look to match. She was first made on 9 Nov 2026 from V's Pinterest reference of a mom in a mirror selfie holding her baby.
 
 ## Paste this first

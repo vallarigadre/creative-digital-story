@@ -2,7 +2,7 @@
 title: "How I Earned My First Amazon Affiliate Income (and What I'd Do Faster)"
 subtitle: "It wasn't life-changing money. It was proof. Here's the setup that got me there and the four things I'd speed up if I started again."
 date: 2026-11-15
-draft: true
+draft: false
 slug: first-amazon-affiliate-income
 category: Income Experiments
 description: "How my AI-drafted blog earned its first Amazon affiliate commissions, the rules beginners miss, and four things I'd do faster next time."
@@ -37,7 +37,7 @@ What makes it work for a busy mom is how the posts get made. I'm not a developer
 2. **I read every draft** and change what doesn't sound right.
 3. **I check every single product myself** and swap in my own SiteStripe links. If a product looks flimsy, has worrying reviews or seems likely to come back as a return, it's out.
 4. **I make the photos in ChatGPT** from the written prompts.
-5. **I publish through GitHub and Netlify**, which sounds more technical than it is.
+5. **I publish through GitHub and Cloudflare**, which sounds more technical than it is.
 
 All of that takes me under two hours on a post day, during my daughter's playtime. That's the whole engine. One blog, two posts a week, real human checks on every link.
 

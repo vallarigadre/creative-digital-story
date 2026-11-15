@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Pinterest management for small shops by Vallari at Creative Digital Story: plans, founding rate and real results.">
+<title>Work With Vallari | Creative Digital Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Nunito:wght@400;600;700&display=swap">
+<style>
+/* Layout: single readable column, a results strip, a 3-plan grid that stacks on phones */
+:root{
+  --bg:#FBF6F1; --surface:#FFFFFF; --blush:#F3DCD6; --fg:#3A2E2A; --muted:#7A6A63;
+  --accent:#B5654A; --sage:#8E9E80; --line:#EADDD5;
+  --display:"Fraunces", Georgia, serif; --body:"Nunito", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#211A17; --surface:#2B221F; --blush:#3A2C28; --fg:#F2E8E2; --muted:#BBA79E;
+  --accent:#E0937A; --sage:#A9B79A; --line:#433530; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#211A17; --surface:#2B221F; --blush:#3A2C28; --fg:#F2E8E2; --muted:#BBA79E;
+  --accent:#E0937A; --sage:#A9B79A; --line:#433530; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding-block:48px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:64px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,6vw,54px)}
+h2{font-size:clamp(26px,4vw,34px)}
+h3{font-size:22px}
+p{margin:0;max-width:62ch}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.hero{display:flex;flex-direction:column;gap:18px}
+.hero p{font-size:19px;color:var(--muted)}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:999px;width:fit-content}
+.btn:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
+section{display:flex;flex-direction:column;gap:22px}
+.proof{background:var(--blush);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat b{display:block;font-family:var(--display);font-size:clamp(28px,4vw,38px);font-weight:600;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--muted)}
+.proof a{color:var(--accent);font-weight:700}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.plan.pop{border:2px solid var(--accent)}
+.tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sage)}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price s{color:var(--muted);font-size:16px}
+.price b{font-family:var(--display);font-size:34px;font-weight:600;font-variant-numeric:tabular-nums}
+.price small{color:var(--muted);font-size:14px}
+.plan ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.note{font-size:15px;color:var(--muted)}
+.offer{border-left:4px solid var(--accent);padding:4px 0 4px 18px}
+ol.steps{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:16px 28px;counter-reset:s}
+ol.steps li{counter-increment:s;display:flex;gap:14px}
+ol.steps li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:50%;background:var(--blush);color:var(--accent);font-weight:700;display:grid;place-items:center}
+.addons{width:100%;border-collapse:collapse;font-size:15px}
+.addons td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.addons td:nth-child(2){font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto}
+.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 28px}
+.faq div{display:flex;flex-direction:column;gap:4px}
+.faq b{font-family:var(--display);font-size:18px;font-weight:600}
+.cta{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.handle{font-weight:700;font-size:20px;user-select:all}
+@media (max-width:760px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .plans,.faq,ol.steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Creative Digital Story · Pinterest management</span>
+    <h1>Pinterest that brings shoppers to your shop, without you making a single pin</h1>
+    <p>I'm Vallari. I plan the keywords, design the pins, write the descriptions and schedule everything, so your products show up when people search for gift and decor ideas. You work directly with me, not an account manager.</p>
+    <a class="btn" href="https://www.instagram.com/creativedigitalstory/" target="_blank" rel="noopener">Message me on Instagram</a>
+  </header>
+
+  <section class="proof" aria-labelledby="proof-h">
+    <span class="eyebrow">Real results</span>
+    <h2 id="proof-h">My newest blog, first month on Pinterest</h2>
+    <div class="stats">
+      <div class="stat"><b>26,140</b><span>impressions</span></div>
+      <div class="stat"><b>18,520</b><span>total audience</span></div>
+      <div class="stat"><b>1,420</b><span>engagements</span></div>
+      <div class="stat"><b>165</b><span>clicks to the site</span></div>
+    </div>
+    <p>All from zero, with zero followers, because Pinterest runs on search. See the pins at <a href="https://www.pinterest.com/Houseandhabitblog/" target="_blank" rel="noopener">pinterest.com/Houseandhabitblog</a> and the blog at <a href="https://houseandhabit.blog" target="_blank" rel="noopener">houseandhabit.blog</a>.</p>
+  </section>
+
+  <section aria-labelledby="plans-h">
+    <span class="eyebrow">Monthly plans</span>
+    <h2 id="plans-h">Pick the pace that fits your shop</h2>
+    <div class="plans">
+      <article class="plan">
+        <span class="tag">Pin Starter</span>
+        <div class="price"><s>$397</s><b>$278</b><small>/month</small></div>
+        <ul>
+          <li>40 fresh pins a month</li>
+          <li>Keyword list, refreshed quarterly</li>
+          <li>Up to 5 boards optimized</li>
+          <li>Monthly report</li>
+        </ul>
+        <p class="note">For a small shop getting started on Pinterest.</p>
+      </article>
+      <article class="plan pop">
+        <span class="tag">Pin Growth · most popular</span>
+        <div class="price"><s>$697</s><b>$488</b><small>/month</small></div>
+        <ul>
+          <li>80 fresh pins plus 4 video pins a month</li>
+          <li>Full keyword list, refreshed monthly</li>
+          <li>Up to 15 boards, new ones as needed</li>
+          <li>Seasonal calendar planned 60 days ahead</li>
+          <li>Rich Pins and product catalog check</li>
+          <li>Monthly report</li>
+        </ul>
+        <p class="note">For Etsy and Shopify shops ready to grow.</p>
+      </article>
+      <article class="plan">
+        <span class="tag">Pin Full Service</span>
+        <div class="price"><s>$1,197</s><b>$838</b><small>/month</small></div>
+        <ul>
+          <li>120 fresh pins plus 8 video pins a month</li>
+          <li>Keywords plus competitor gaps</li>
+          <li>All boards, plus seasonal boards</li>
+          <li>Calendar planned 90 days ahead</li>
+          <li>Full product catalog setup</li>
+          <li>Pinterest ads managed (ad spend paid by you)</li>
+          <li>Monthly report and quarterly strategy review</li>
+        </ul>
+        <p class="note">For brands ready to add paid ads.</p>
+      </article>
+    </div>
+    <p class="offer"><b>Founding client rate:</b> I'm taking on my first 3 shops at 30% off for the first 3 months, in return for a short testimonial. The prices above include it. Plans have a 3-month minimum, because Pinterest traffic builds over 3 to 6 months.</p>
+  </section>
+
+  <section aria-labelledby="how-h">
+    <span class="eyebrow">How it works</span>
+    <h2 id="how-h">Pins go live within 10 business days</h2>
+    <ol class="steps">
+      <li><p><b>Quick chat by DM or email</b> about your shop, what you sell and your goals.</p></li>
+      <li><p><b>Sign and pay</b> the first month by invoice through PayPal.</p></li>
+      <li><p><b>Add me as a collaborator</b> on your Pinterest business account. I never need your password.</p></li>
+      <li><p><b>Keyword plan in week 1,</b> shared for your approval.</p></li>
+      <li><p><b>Pin templates in your brand colors in week 2,</b> shared for your approval.</p></li>
+      <li><p><b>Pinning starts</b> and runs every week, with a report at the start of each month.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="addons-h">
+    <span class="eyebrow">One-time projects</span>
+    <h2 id="addons-h">Want to try before a monthly plan?</h2>
+    <div class="tablewrap">
+      <table class="addons">
+        <tr><td>Pinterest audit</td><td>$97</td><td>A review of your profile, boards and pins with a fix list. Credited if you start a monthly plan within 14 days.</td></tr>
+        <tr><td>Account setup</td><td>$197</td><td>Business account, claimed website, profile, 10 keyword-rich boards and Rich Pins.</td></tr>
+        <tr><td>Keyword report</td><td>$149</td><td>100+ ranked Pinterest keywords for your niche, grouped by board.</td></tr>
+        <tr><td>Pin design pack</td><td>$249</td><td>30 custom pins with titles and descriptions, ready for you to schedule.</td></tr>
+        <tr><td>Shopify or Etsy catalog</td><td>$149</td><td>Your product catalog connected, so every product becomes a shoppable pin.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="faq-h">
+    <span class="eyebrow">Questions</span>
+    <h2 id="faq-h">Good to know</h2>
+    <div class="faq">
+      <div><b>How soon will I see results?</b><p>New accounts usually see real traffic growth in 3 to 6 months. Pins keep working for months after they go up.</p></div>
+      <div><b>Do I need followers?</b><p>No. People find pins by searching, so a shop with no followers can still show up for the right searches.</p></div>
+      <div><b>Can I approve pins first?</b><p>Yes. You approve the keyword plan and pin templates up front, and you can review the weekly queue anytime.</p></div>
+      <div><b>Who owns the pins?</b><p>You do. Every pin, board and design made for your account is yours, and you can remove my access anytime.</p></div>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-h">
+    <h2 id="cta-h">Let's get your shop found</h2>
+    <p>Send me a message with your shop name, and I'll reply with a few free pin ideas for it.</p>
+    <span class="handle">@creativedigitalstory</span>
+    <a class="btn" href="https://www.instagram.com/creativedigitalstory/" target="_blank" rel="noopener">Message me on Instagram</a>
+  </section>
+</div>
+</body>
+</html>

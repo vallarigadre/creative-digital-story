@@ -346,6 +346,7 @@ function shell({ title, description, file, current, body, ogImage, jsonld, type 
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="p:domain_verify" content="63ea446e0c378c9616e6a01d4e9c0f46"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">

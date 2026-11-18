@@ -206,6 +206,15 @@ td a { color: inherit; }
     return out;
   }
 
+  // On this blog posts live at /<slug> (House & Habit uses a posts folder), so a "post" is any
+  // single-level path that isn't one of the site's fixed pages.
+  var NOT_POSTS = { "": 1, "index": 1, "blog": 1, "shop": 1, "about": 1, "disclosure": 1, "privacy": 1, "thanks": 1,
+    "behind-the-build": 1, "ai-tools": 1, "income-experiments": 1, "playbooks": 1, "404": 1 };
+  function isPost(p) {
+    var s = String(p || "").replace(/^\/+|\/+$/g, "").replace(/\.html$/, "");
+    return !!s && s.indexOf("/") === -1 && !NOT_POSTS[s] && s.indexOf("admin") !== 0;
+  }
+
   function titles() {
     var t = {};
     Object.keys(data.days).sort().forEach(function (d) { Object.assign(t, data.days[d].titles || {}); });
@@ -214,7 +223,7 @@ td a { color: inherit; }
 
   function fillPostFilter() {
     var t = titles(), sel = $("postFilter"), cur = sel.value;
-    var posts = Object.keys(t).filter(function (p) { return p.indexOf("/posts/") === 0; }).sort(function (a, b) { return t[a].localeCompare(t[b]); });
+    var posts = Object.keys(t).filter(isPost).sort(function (a, b) { return t[a].localeCompare(t[b]); });
     sel.innerHTML = '<option value="">All posts</option>' + posts.map(function (p) { return '<option value="' + esc(p) + '">' + esc(t[p]) + "</option>"; }).join("");
     sel.value = cur;
   }
@@ -231,7 +240,7 @@ td a { color: inherit; }
     var days = dayList(), t = titles();
     var all = rows(days);
     var list = postFilter ? all.filter(function (r) { return r.p === postFilter; }) : all;
-    var postRows = list.filter(function (r) { return r.p.indexOf("/posts/") === 0; });
+    var postRows = list.filter(function (r) { return isPost(r.p); });
     var name = function (p) { return t[p] || p; };
 
     // tiles
@@ -298,7 +307,7 @@ td a { color: inherit; }
     }).join("") : '<tr><td colspan="4" class="empty">No visits yet in this period.</td></tr>';
 
     // other pages
-    var other = group(all.filter(function (r) { return r.t === "view" && r.p.indexOf("/posts/") !== 0; }), function (r) { return r.p; });
+    var other = group(all.filter(function (r) { return r.t === "view" && !isPost(r.p); }), function (r) { return r.p; });
     var ok = sorted(other, "views").slice(0, 15);
     $("pagesTable").querySelector("tbody").innerHTML = ok.length ? ok.map(function (p) {
       return "<tr><td>" + esc(p === "/" ? "Home page" : name(p)) + '<span class="sub">' + esc(p) + '</span></td><td class="n">' + fmt(other[p].views) + "</td></tr>";

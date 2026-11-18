@@ -2,7 +2,7 @@
 title: "How to Make Pinterest Pins With ChatGPT (Copy My Prompts)"
 subtitle: "One chat, one style note, one prompt you can reuse for every pin. Your first set is done in under an hour."
 date: 2026-11-18
-draft: true
+draft: false
 slug: pinterest-pins-chatgpt
 series: quick-how-to
 category: AI Tools

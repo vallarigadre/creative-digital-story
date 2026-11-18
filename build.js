@@ -337,6 +337,13 @@ nav.sections{justify-content:center}
 // ---------- page shell ----------
 const analytics = cfg.cloudflareAnalyticsToken
   ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${esc(cfg.cloudflareAnalyticsToken)}"}'></script>` : '';
+// Google Analytics (GA4 "G-..." id) and Google AdSense ("ca-pub-..." id): fill in site.config.json and rebuild.
+const GA_ID = /^G-[A-Z0-9]+$/.test(cfg.googleAnalyticsId || '') ? cfg.googleAnalyticsId : '';
+const ADSENSE = /^ca-pub-\d{10,20}$/.test(cfg.adsenseClient || '') ? cfg.adsenseClient : '';
+const googleTags = (GA_ID ? `\n<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","${GA_ID}");
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(a&&/beacons\\.ai|amzn\\.to|amazon\\./.test(a.href))gtag("event","shop_click",{link_url:a.href,link_text:(a.textContent||"").trim().slice(0,100)});});</script>` : '')
+  + (ADSENSE ? `\n<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE}" crossorigin="anonymous"></script>` : '');
 
 function shell({ title, description, file, current, body, ogImage, jsonld, type = 'website', noindex = false }) {
   const canonical = `${cfg.url}/${file === 'index.html' ? '' : file.replace(/\.html$/, '')}`;
@@ -363,7 +370,7 @@ ${ogImage ? `<meta property="og:image" content="${cfg.url}/${ogImage}">\n<meta n
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap">
 <style>${CSS}</style>
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
-${analytics}${ON_CF && !noindex ? `\n<script defer src="/t.js?v=${T_VERSION}"></script>` : ''}
+${analytics}${noindex ? '' : googleTags}${ON_CF && !noindex ? `\n<script defer src="/t.js?v=${T_VERSION}"></script>` : ''}
 </head>
 <body>
 <div class="wrap">
@@ -587,6 +594,7 @@ for (const f of fs.readdirSync(pagesDir).filter(f => f.endsWith('.md'))) {
 // Sitemap, robots, RSS
 const urls = ['', 'blog', 'shop', ...SECTIONS.map(s => s.slug), 'about', ...posts.map(p => p.slug)];
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${cfg.url}/${u}</loc></url>`).join('\n')}\n</urlset>\n`);
+if (ADSENSE) write('ads.txt', `google.com, ${ADSENSE.replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${cfg.url}/sitemap.xml\n`);
 write('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${esc(cfg.title)}</title><link>${cfg.url}</link><description>${esc(cfg.tagline)}</description>\n${newestFirst.map(p => `<item><title>${esc(p.title)}</title><link>${cfg.url}/${p.slug}</link><guid>${cfg.url}/${p.slug}</guid><pubDate>${new Date(p.date + 'T03:30:00Z').toUTCString()}</pubDate><description>${esc(p.description)}</description></item>`).join('\n')}\n</channel></rss>\n`);
 

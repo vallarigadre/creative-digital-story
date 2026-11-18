@@ -7,5 +7,7 @@
   "url": "https://creativedigitalstory.com",
   "shopUrl": "https://beacons.ai/creativedigitalstory",
   "newsletterName": "The Saturday Build",
-  "cloudflareAnalyticsToken": ""
+  "cloudflareAnalyticsToken": "",
+  "googleAnalyticsId": "",
+  "adsenseClient": ""
 }

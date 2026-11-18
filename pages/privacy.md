@@ -6,11 +6,11 @@ This site keeps data collection to a minimum.
 
 ## Newsletter
 
-If you join The Saturday Build, your email address is stored by the site's host, Netlify, and used only to send you the newsletter. You can unsubscribe at any time using the link in any email.
+If you join The Saturday Build, your email address is stored by the site's host, Cloudflare, and used only to send you the newsletter. You can unsubscribe at any time using the link in any email.
 
 ## Analytics
 
-The site may use Cloudflare Web Analytics to count page views. It does not use cookies and does not track you across other websites.
+The site counts page views, read-throughs and shop clicks with its own simple counter. It does not use cookies, does not store your IP address and does not track you across other websites.
 
 ## Links to other sites
 

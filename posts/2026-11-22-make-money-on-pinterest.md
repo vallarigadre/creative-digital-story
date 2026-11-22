@@ -2,7 +2,7 @@
 title: "How to Make Money on Pinterest in 2026: 3 Real Ways and a Realistic Timeline"
 subtitle: "Pinterest won't pay you to pin. Here's where the money really comes from: affiliate pins, blog traffic and your own products."
 date: 2026-11-22
-draft: true
+draft: false
 slug: make-money-on-pinterest
 category: Playbooks
 description: "How to make money on Pinterest: affiliate pins, blog traffic and your own products, compared honestly, with a realistic timeline for beginners."
@@ -27,7 +27,7 @@ I opened the Pinterest account for my own blog only recently. My goal is a milli
 
 ## First, how money on Pinterest actually works
 
-Think of Pinterest as a search engine with pictures, not a social app. People don't go there to see what their friends are doing. They go to plan: a nursery, a capsule wardrobe, a Thanksgiving table, a side hustle. Pinterest said in its latest results that it now has 661 million monthly users and handles more than 80 billion searches a month. That's a lot of people typing "cozy living room ideas" with a credit card nearby.
+Think of Pinterest as a search engine with pictures, not a social app. People don't go there to see what their friends are doing. They go to plan: a nursery, a capsule wardrobe, a Thanksgiving table, a side hustle. Pinterest reported 661 million monthly users in its latest results, and the company says it handles more than 80 billion searches a month. That's a lot of people typing "cozy living room ideas" with a credit card nearby.
 
 Because people are planning, they click through to websites far more willingly than on most platforms. That click is where your money starts. There are three main places to send it:
 
@@ -114,6 +114,8 @@ None of this works without consistency, and consistency only works if it fits ar
 - [ ] Add a clear affiliate disclosure on any pin that links to a product directly
 - [ ] Pin to your most relevant board first
 - [ ] Glance at your Pinterest analytics once a week, not once an hour
+
+![A woman sitting cross-legged on a cream knit rug writing a list in a notebook beside her phone showing pins, while her toddler in a taupe knit beanie reaches for wooden blocks](/images/make-money-on-pinterest-4.jpg)
 
 AI can take the heaviest part, the writing, off your plate. I make my pin images in ChatGPT and a Claude task fills in and schedules my pin drafts. If you want my exact image prompts, they're in [How to Make Pinterest Pins With ChatGPT](/pinterest-pins-chatgpt). For the words, you can paste this into Claude or ChatGPT:
 

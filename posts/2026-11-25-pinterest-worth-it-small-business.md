@@ -1,16 +1,16 @@
 ---
-title: "Is Pinterest Worth It for Small Business in 2026? An Honest Guide"
+title: "Is Pinterest Worth It for Small Business in 2027? An Honest Guide"
 subtitle: "Who it suits, how buyers actually use it, what it takes each week and how long before it starts bringing customers."
 date: 2026-11-25
 draft: true
 slug: pinterest-worth-it-small-business
 series: pinterest-for-business
 category: Playbooks
-description: "Is Pinterest worth it for small business in 2026? Who it suits, how shoppers search, the weekly time it takes and an honest timeline for results."
+description: "Is Pinterest worth it for small business in 2027? Who it suits, how shoppers search, the weekly time it takes and an honest timeline for results."
 tags: [pinterest for small business, is pinterest worth it, pinterest marketing for small business, pinterest for etsy sellers, pinterest for shopify, small business marketing]
 tools: [Pinterest, Pinterest Trends, Canva]
-pin_title: "Is Pinterest Worth It for Small Business in 2026?"
-pin_description: "Is Pinterest worth it for small business in 2026? An honest guide to who Pinterest marketing suits (shops, makers, boutiques, salons, Etsy and Shopify sellers), how buyers search, what it takes each week and how long it really takes to work."
+pin_title: "Is Pinterest Worth It for Small Business in 2027?"
+pin_description: "Is Pinterest worth it for small business in 2027? An honest guide to who Pinterest marketing suits (shops, makers, boutiques, salons, Etsy and Shopify sellers), how buyers search, what it takes each week and how long it really takes to work."
 cover: "/images/pinterest-worth-it-small-business.jpg"
 cover_shape: tall
 cover_alt: "A woman at a round white table packing a kraft parcel with blush ribbon, a phone beside her showing a blurred grid of pins, her face out of frame"
@@ -92,7 +92,7 @@ Pinterest is slow at the start. In the first month you may see almost nothing, a
 
 Most Pinterest marketers say to give it three to four months of steady pinning before you judge it. Around then, the pins that match real searches tend to start picking up impressions and clicks, and the ones that work keep working. That's the trade: it's slower than a paid ad, but it keeps going long after you stop touching a pin.
 
-So Pinterest is worth it if:
+So Pinterest is worth it in 2027 if:
 
 - your products or services are visual or easy to plan around,
 - you can give it one to two hours a week (or hand it off) for at least three months, and
